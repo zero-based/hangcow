@@ -55,7 +55,7 @@ namespace Hangman
         {
             //reseting wrong guesses and image
             wrongGuesses     = 0;
-            pictureBox.Image = hangmanAllImages[wrongGuesses];
+            PictureBox.Image = hangmanAllImages[wrongGuesses];
             
             //picking up a random word from "words array"
             Random rnd   = new Random();
@@ -119,11 +119,20 @@ namespace Hangman
                 wrongGuesses++;
 
             if (currentWordCopy.Equals(currentWord))
-                statusLabel.Text = "You Won!";
-            else if (wrongGuesses < 7)
-                pictureBox.Image = hangmanAllImages[wrongGuesses];
+            {
+                wordPreviewLabel.Text = "";
+                wordPreviewLabel.Text = "You Won!";
+            }
             else
-                statusLabel.Text = "Game Over!";
+            {
+                if (wrongGuesses < 7)
+                    PictureBox.Image = hangmanAllImages[wrongGuesses];
+                else
+                {
+                    wordPreviewLabel.Text = "";
+                    wordPreviewLabel.Text = "Game Over!";
+                }
+            }
 
         }
 
@@ -132,6 +141,18 @@ namespace Hangman
             loadFile();
             setUpWordChoice();
         }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            GamePanel.Visible     = true;
+            MainMenuPanel.Visible = false;
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
 
 

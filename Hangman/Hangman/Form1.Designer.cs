@@ -28,440 +28,657 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.cmdA = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.statusLabel = new System.Windows.Forms.Label();
+            this.StartButton = new System.Windows.Forms.Button();
+            this.ScoreboardButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.OptionsButton = new System.Windows.Forms.Button();
+            this.MainMenuLabel = new System.Windows.Forms.Label();
+            this.MainMenuPanel = new System.Windows.Forms.Panel();
+            this.GameTitleLabel = new System.Windows.Forms.Label();
+            this.ButtonR = new System.Windows.Forms.Button();
+            this.ButtonF = new System.Windows.Forms.Button();
+            this.ButtonE = new System.Windows.Forms.Button();
+            this.ButtonQ = new System.Windows.Forms.Button();
+            this.ButtonS = new System.Windows.Forms.Button();
+            this.ButtonG = new System.Windows.Forms.Button();
+            this.ButtonD = new System.Windows.Forms.Button();
+            this.ButtonP = new System.Windows.Forms.Button();
+            this.ButtonT = new System.Windows.Forms.Button();
+            this.ButtonI = new System.Windows.Forms.Button();
+            this.ButtonC = new System.Windows.Forms.Button();
+            this.ButtonO = new System.Windows.Forms.Button();
+            this.ButtonU = new System.Windows.Forms.Button();
+            this.ButtonJ = new System.Windows.Forms.Button();
+            this.ButtonB = new System.Windows.Forms.Button();
+            this.ButtonN = new System.Windows.Forms.Button();
+            this.ButtonV = new System.Windows.Forms.Button();
+            this.ButtonK = new System.Windows.Forms.Button();
+            this.ButtonM = new System.Windows.Forms.Button();
+            this.ButtonW = new System.Windows.Forms.Button();
+            this.ButtonL = new System.Windows.Forms.Button();
+            this.ButtonH = new System.Windows.Forms.Button();
+            this.ButtonA = new System.Windows.Forms.Button();
+            this.ButtonX = new System.Windows.Forms.Button();
+            this.PictureBox = new System.Windows.Forms.PictureBox();
+            this.ButtonY = new System.Windows.Forms.Button();
             this.wordPreviewLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
             this.hintLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.ButtonZ = new System.Windows.Forms.Button();
+            this.GamePanel = new System.Windows.Forms.Panel();
+            this.MainMenuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
+            this.GamePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox
+            // StartButton
             // 
-            this.pictureBox.Image = global::Hangman.Properties.Resources.Hangman_0;
-            this.pictureBox.Location = new System.Drawing.Point(338, 44);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(234, 248);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
+            this.StartButton.BackColor = System.Drawing.Color.Indigo;
+            this.StartButton.FlatAppearance.BorderSize = 0;
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartButton.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartButton.ForeColor = System.Drawing.Color.LightGreen;
+            this.StartButton.Location = new System.Drawing.Point(387, 157);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(245, 55);
+            this.StartButton.TabIndex = 32;
+            this.StartButton.Text = "Start";
+            this.StartButton.UseVisualStyleBackColor = false;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // cmdA
+            // ScoreboardButton
             // 
-            this.cmdA.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdA.Location = new System.Drawing.Point(48, 298);
-            this.cmdA.Name = "cmdA";
-            this.cmdA.Size = new System.Drawing.Size(34, 47);
-            this.cmdA.TabIndex = 1;
-            this.cmdA.Text = "A";
-            this.cmdA.UseVisualStyleBackColor = true;
-            this.cmdA.Click += new System.EventHandler(this.guessClick);
+            this.ScoreboardButton.BackColor = System.Drawing.Color.Indigo;
+            this.ScoreboardButton.FlatAppearance.BorderSize = 0;
+            this.ScoreboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ScoreboardButton.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoreboardButton.ForeColor = System.Drawing.Color.LightGreen;
+            this.ScoreboardButton.Location = new System.Drawing.Point(387, 212);
+            this.ScoreboardButton.Name = "ScoreboardButton";
+            this.ScoreboardButton.Size = new System.Drawing.Size(245, 55);
+            this.ScoreboardButton.TabIndex = 33;
+            this.ScoreboardButton.Text = "Scoreboard";
+            this.ScoreboardButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // ExitButton
             // 
-            this.button1.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(88, 298);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(34, 47);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "B";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.guessClick);
+            this.ExitButton.BackColor = System.Drawing.Color.Indigo;
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.LightGreen;
+            this.ExitButton.Location = new System.Drawing.Point(387, 322);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(245, 55);
+            this.ExitButton.TabIndex = 34;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // statusLabel
+            // OptionsButton
             // 
-            this.statusLabel.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.statusLabel.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.statusLabel.Location = new System.Drawing.Point(45, 90);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(237, 42);
-            this.statusLabel.TabIndex = 3;
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.OptionsButton.BackColor = System.Drawing.Color.Indigo;
+            this.OptionsButton.FlatAppearance.BorderSize = 0;
+            this.OptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OptionsButton.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptionsButton.ForeColor = System.Drawing.Color.LightGreen;
+            this.OptionsButton.Location = new System.Drawing.Point(387, 267);
+            this.OptionsButton.Name = "OptionsButton";
+            this.OptionsButton.Size = new System.Drawing.Size(245, 55);
+            this.OptionsButton.TabIndex = 35;
+            this.OptionsButton.Text = "Options";
+            this.OptionsButton.UseVisualStyleBackColor = false;
+            // 
+            // MainMenuLabel
+            // 
+            this.MainMenuLabel.AutoSize = true;
+            this.MainMenuLabel.BackColor = System.Drawing.Color.Transparent;
+            this.MainMenuLabel.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuLabel.ForeColor = System.Drawing.Color.Indigo;
+            this.MainMenuLabel.Location = new System.Drawing.Point(428, 102);
+            this.MainMenuLabel.Name = "MainMenuLabel";
+            this.MainMenuLabel.Size = new System.Drawing.Size(162, 52);
+            this.MainMenuLabel.TabIndex = 36;
+            this.MainMenuLabel.Text = "Main Menu";
+            this.MainMenuLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MainMenuPanel
+            // 
+            this.MainMenuPanel.Controls.Add(this.GameTitleLabel);
+            this.MainMenuPanel.Controls.Add(this.MainMenuLabel);
+            this.MainMenuPanel.Controls.Add(this.OptionsButton);
+            this.MainMenuPanel.Controls.Add(this.ExitButton);
+            this.MainMenuPanel.Controls.Add(this.ScoreboardButton);
+            this.MainMenuPanel.Controls.Add(this.StartButton);
+            this.MainMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainMenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainMenuPanel.Name = "MainMenuPanel";
+            this.MainMenuPanel.Size = new System.Drawing.Size(1018, 478);
+            this.MainMenuPanel.TabIndex = 0;
+            // 
+            // GameTitleLabel
+            // 
+            this.GameTitleLabel.AutoSize = true;
+            this.GameTitleLabel.Font = new System.Drawing.Font("Drafting", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameTitleLabel.Location = new System.Drawing.Point(408, 52);
+            this.GameTitleLabel.Name = "GameTitleLabel";
+            this.GameTitleLabel.Size = new System.Drawing.Size(203, 40);
+            this.GameTitleLabel.TabIndex = 38;
+            this.GameTitleLabel.Text = "Hangman";
+            // 
+            // ButtonR
+            // 
+            this.ButtonR.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonR.FlatAppearance.BorderSize = 0;
+            this.ButtonR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonR.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonR.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonR.Location = new System.Drawing.Point(386, 375);
+            this.ButtonR.Name = "ButtonR";
+            this.ButtonR.Size = new System.Drawing.Size(43, 47);
+            this.ButtonR.TabIndex = 20;
+            this.ButtonR.Text = "R";
+            this.ButtonR.UseVisualStyleBackColor = false;
+            this.ButtonR.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonF
+            // 
+            this.ButtonF.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonF.FlatAppearance.BorderSize = 0;
+            this.ButtonF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonF.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonF.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonF.Location = new System.Drawing.Point(426, 333);
+            this.ButtonF.Name = "ButtonF";
+            this.ButtonF.Size = new System.Drawing.Size(43, 47);
+            this.ButtonF.TabIndex = 8;
+            this.ButtonF.Text = "F";
+            this.ButtonF.UseVisualStyleBackColor = false;
+            this.ButtonF.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonE
+            // 
+            this.ButtonE.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonE.FlatAppearance.BorderSize = 0;
+            this.ButtonE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonE.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonE.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonE.Location = new System.Drawing.Point(386, 333);
+            this.ButtonE.Name = "ButtonE";
+            this.ButtonE.Size = new System.Drawing.Size(43, 47);
+            this.ButtonE.TabIndex = 7;
+            this.ButtonE.Text = "E";
+            this.ButtonE.UseVisualStyleBackColor = false;
+            this.ButtonE.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonQ
+            // 
+            this.ButtonQ.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonQ.FlatAppearance.BorderSize = 0;
+            this.ButtonQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonQ.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonQ.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonQ.Location = new System.Drawing.Point(346, 375);
+            this.ButtonQ.Name = "ButtonQ";
+            this.ButtonQ.Size = new System.Drawing.Size(43, 47);
+            this.ButtonQ.TabIndex = 19;
+            this.ButtonQ.Text = "Q";
+            this.ButtonQ.UseVisualStyleBackColor = false;
+            this.ButtonQ.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonS
+            // 
+            this.ButtonS.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonS.FlatAppearance.BorderSize = 0;
+            this.ButtonS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonS.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonS.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonS.Location = new System.Drawing.Point(426, 375);
+            this.ButtonS.Name = "ButtonS";
+            this.ButtonS.Size = new System.Drawing.Size(43, 47);
+            this.ButtonS.TabIndex = 21;
+            this.ButtonS.Text = "S";
+            this.ButtonS.UseVisualStyleBackColor = false;
+            this.ButtonS.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonG
+            // 
+            this.ButtonG.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonG.FlatAppearance.BorderSize = 0;
+            this.ButtonG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonG.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonG.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonG.Location = new System.Drawing.Point(466, 333);
+            this.ButtonG.Name = "ButtonG";
+            this.ButtonG.Size = new System.Drawing.Size(43, 47);
+            this.ButtonG.TabIndex = 9;
+            this.ButtonG.Text = "G";
+            this.ButtonG.UseVisualStyleBackColor = false;
+            this.ButtonG.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonD
+            // 
+            this.ButtonD.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonD.FlatAppearance.BorderSize = 0;
+            this.ButtonD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonD.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonD.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonD.Location = new System.Drawing.Point(346, 333);
+            this.ButtonD.Name = "ButtonD";
+            this.ButtonD.Size = new System.Drawing.Size(43, 47);
+            this.ButtonD.TabIndex = 6;
+            this.ButtonD.Text = "D";
+            this.ButtonD.UseVisualStyleBackColor = false;
+            this.ButtonD.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonP
+            // 
+            this.ButtonP.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonP.FlatAppearance.BorderSize = 0;
+            this.ButtonP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonP.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonP.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonP.Location = new System.Drawing.Point(306, 375);
+            this.ButtonP.Name = "ButtonP";
+            this.ButtonP.Size = new System.Drawing.Size(43, 47);
+            this.ButtonP.TabIndex = 18;
+            this.ButtonP.Text = "P";
+            this.ButtonP.UseVisualStyleBackColor = false;
+            this.ButtonP.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonT
+            // 
+            this.ButtonT.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonT.FlatAppearance.BorderSize = 0;
+            this.ButtonT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonT.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonT.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonT.Location = new System.Drawing.Point(466, 375);
+            this.ButtonT.Name = "ButtonT";
+            this.ButtonT.Size = new System.Drawing.Size(43, 47);
+            this.ButtonT.TabIndex = 22;
+            this.ButtonT.Text = "T";
+            this.ButtonT.UseVisualStyleBackColor = false;
+            this.ButtonT.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonI
+            // 
+            this.ButtonI.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonI.FlatAppearance.BorderSize = 0;
+            this.ButtonI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonI.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonI.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonI.Location = new System.Drawing.Point(546, 333);
+            this.ButtonI.Name = "ButtonI";
+            this.ButtonI.Size = new System.Drawing.Size(43, 47);
+            this.ButtonI.TabIndex = 11;
+            this.ButtonI.Text = "I";
+            this.ButtonI.UseVisualStyleBackColor = false;
+            this.ButtonI.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonC
+            // 
+            this.ButtonC.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonC.FlatAppearance.BorderSize = 0;
+            this.ButtonC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonC.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonC.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonC.Location = new System.Drawing.Point(306, 333);
+            this.ButtonC.Name = "ButtonC";
+            this.ButtonC.Size = new System.Drawing.Size(43, 47);
+            this.ButtonC.TabIndex = 5;
+            this.ButtonC.Text = "C";
+            this.ButtonC.UseVisualStyleBackColor = false;
+            this.ButtonC.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonO
+            // 
+            this.ButtonO.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonO.FlatAppearance.BorderSize = 0;
+            this.ButtonO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonO.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonO.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonO.Location = new System.Drawing.Point(266, 375);
+            this.ButtonO.Name = "ButtonO";
+            this.ButtonO.Size = new System.Drawing.Size(43, 47);
+            this.ButtonO.TabIndex = 17;
+            this.ButtonO.Text = "O";
+            this.ButtonO.UseVisualStyleBackColor = false;
+            this.ButtonO.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonU
+            // 
+            this.ButtonU.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonU.FlatAppearance.BorderSize = 0;
+            this.ButtonU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonU.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonU.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonU.Location = new System.Drawing.Point(506, 375);
+            this.ButtonU.Name = "ButtonU";
+            this.ButtonU.Size = new System.Drawing.Size(43, 47);
+            this.ButtonU.TabIndex = 23;
+            this.ButtonU.Text = "U";
+            this.ButtonU.UseVisualStyleBackColor = false;
+            this.ButtonU.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonJ
+            // 
+            this.ButtonJ.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonJ.FlatAppearance.BorderSize = 0;
+            this.ButtonJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonJ.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonJ.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonJ.Location = new System.Drawing.Point(586, 333);
+            this.ButtonJ.Name = "ButtonJ";
+            this.ButtonJ.Size = new System.Drawing.Size(43, 47);
+            this.ButtonJ.TabIndex = 12;
+            this.ButtonJ.Text = "J";
+            this.ButtonJ.UseVisualStyleBackColor = false;
+            this.ButtonJ.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonB
+            // 
+            this.ButtonB.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonB.FlatAppearance.BorderSize = 0;
+            this.ButtonB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonB.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonB.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonB.Location = new System.Drawing.Point(266, 333);
+            this.ButtonB.Name = "ButtonB";
+            this.ButtonB.Size = new System.Drawing.Size(43, 47);
+            this.ButtonB.TabIndex = 2;
+            this.ButtonB.Text = "B";
+            this.ButtonB.UseVisualStyleBackColor = false;
+            this.ButtonB.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonN
+            // 
+            this.ButtonN.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonN.FlatAppearance.BorderSize = 0;
+            this.ButtonN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonN.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonN.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonN.Location = new System.Drawing.Point(226, 375);
+            this.ButtonN.Name = "ButtonN";
+            this.ButtonN.Size = new System.Drawing.Size(43, 47);
+            this.ButtonN.TabIndex = 16;
+            this.ButtonN.Text = "N";
+            this.ButtonN.UseVisualStyleBackColor = false;
+            this.ButtonN.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonV
+            // 
+            this.ButtonV.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonV.FlatAppearance.BorderSize = 0;
+            this.ButtonV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonV.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonV.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonV.Location = new System.Drawing.Point(546, 375);
+            this.ButtonV.Name = "ButtonV";
+            this.ButtonV.Size = new System.Drawing.Size(43, 47);
+            this.ButtonV.TabIndex = 24;
+            this.ButtonV.Text = "V";
+            this.ButtonV.UseVisualStyleBackColor = false;
+            this.ButtonV.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonK
+            // 
+            this.ButtonK.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonK.FlatAppearance.BorderSize = 0;
+            this.ButtonK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonK.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonK.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonK.Location = new System.Drawing.Point(626, 333);
+            this.ButtonK.Name = "ButtonK";
+            this.ButtonK.Size = new System.Drawing.Size(43, 47);
+            this.ButtonK.TabIndex = 13;
+            this.ButtonK.Text = "K";
+            this.ButtonK.UseVisualStyleBackColor = false;
+            this.ButtonK.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonM
+            // 
+            this.ButtonM.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonM.FlatAppearance.BorderSize = 0;
+            this.ButtonM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonM.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonM.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonM.Location = new System.Drawing.Point(706, 333);
+            this.ButtonM.Name = "ButtonM";
+            this.ButtonM.Size = new System.Drawing.Size(43, 47);
+            this.ButtonM.TabIndex = 15;
+            this.ButtonM.Text = "M";
+            this.ButtonM.UseVisualStyleBackColor = false;
+            this.ButtonM.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonW
+            // 
+            this.ButtonW.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonW.FlatAppearance.BorderSize = 0;
+            this.ButtonW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonW.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonW.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonW.Location = new System.Drawing.Point(586, 375);
+            this.ButtonW.Name = "ButtonW";
+            this.ButtonW.Size = new System.Drawing.Size(43, 47);
+            this.ButtonW.TabIndex = 25;
+            this.ButtonW.Text = "W";
+            this.ButtonW.UseVisualStyleBackColor = false;
+            this.ButtonW.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonL
+            // 
+            this.ButtonL.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonL.FlatAppearance.BorderSize = 0;
+            this.ButtonL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonL.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonL.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonL.Location = new System.Drawing.Point(666, 333);
+            this.ButtonL.Name = "ButtonL";
+            this.ButtonL.Size = new System.Drawing.Size(43, 47);
+            this.ButtonL.TabIndex = 14;
+            this.ButtonL.Text = "L";
+            this.ButtonL.UseVisualStyleBackColor = false;
+            this.ButtonL.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonH
+            // 
+            this.ButtonH.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonH.FlatAppearance.BorderSize = 0;
+            this.ButtonH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonH.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonH.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonH.Location = new System.Drawing.Point(506, 333);
+            this.ButtonH.Name = "ButtonH";
+            this.ButtonH.Size = new System.Drawing.Size(43, 47);
+            this.ButtonH.TabIndex = 10;
+            this.ButtonH.Text = "H";
+            this.ButtonH.UseVisualStyleBackColor = false;
+            this.ButtonH.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonA
+            // 
+            this.ButtonA.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonA.FlatAppearance.BorderSize = 0;
+            this.ButtonA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonA.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonA.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonA.Location = new System.Drawing.Point(226, 333);
+            this.ButtonA.Name = "ButtonA";
+            this.ButtonA.Size = new System.Drawing.Size(43, 47);
+            this.ButtonA.TabIndex = 1;
+            this.ButtonA.Text = "A";
+            this.ButtonA.UseVisualStyleBackColor = false;
+            this.ButtonA.Click += new System.EventHandler(this.guessClick);
+            // 
+            // ButtonX
+            // 
+            this.ButtonX.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonX.FlatAppearance.BorderSize = 0;
+            this.ButtonX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonX.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonX.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonX.Location = new System.Drawing.Point(626, 375);
+            this.ButtonX.Name = "ButtonX";
+            this.ButtonX.Size = new System.Drawing.Size(43, 47);
+            this.ButtonX.TabIndex = 26;
+            this.ButtonX.Text = "X";
+            this.ButtonX.UseVisualStyleBackColor = false;
+            this.ButtonX.Click += new System.EventHandler(this.guessClick);
+            // 
+            // PictureBox
+            // 
+            this.PictureBox.Image = global::Hangman.Properties.Resources.Hangman_0;
+            this.PictureBox.Location = new System.Drawing.Point(535, 58);
+            this.PictureBox.Name = "PictureBox";
+            this.PictureBox.Size = new System.Drawing.Size(234, 248);
+            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox.TabIndex = 0;
+            this.PictureBox.TabStop = false;
+            // 
+            // ButtonY
+            // 
+            this.ButtonY.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonY.FlatAppearance.BorderSize = 0;
+            this.ButtonY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonY.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonY.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonY.Location = new System.Drawing.Point(666, 375);
+            this.ButtonY.Name = "ButtonY";
+            this.ButtonY.Size = new System.Drawing.Size(43, 47);
+            this.ButtonY.TabIndex = 27;
+            this.ButtonY.Text = "Y";
+            this.ButtonY.UseVisualStyleBackColor = false;
+            this.ButtonY.Click += new System.EventHandler(this.guessClick);
             // 
             // wordPreviewLabel
             // 
-            this.wordPreviewLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.wordPreviewLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.wordPreviewLabel.BackColor = System.Drawing.Color.Transparent;
             this.wordPreviewLabel.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wordPreviewLabel.Location = new System.Drawing.Point(48, 165);
+            this.wordPreviewLabel.Location = new System.Drawing.Point(228, 132);
             this.wordPreviewLabel.Name = "wordPreviewLabel";
-            this.wordPreviewLabel.Size = new System.Drawing.Size(234, 46);
+            this.wordPreviewLabel.Size = new System.Drawing.Size(268, 67);
             this.wordPreviewLabel.TabIndex = 4;
             this.wordPreviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(128, 298);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(34, 47);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "C";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(248, 298);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(34, 47);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "F";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(208, 298);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(34, 47);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "E";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(168, 298);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(34, 47);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "D";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(488, 298);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(34, 47);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "L";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(448, 298);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(34, 47);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "K";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(408, 298);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(34, 47);
-            this.button8.TabIndex = 12;
-            this.button8.Text = "J";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(368, 298);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(34, 47);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "I";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(328, 298);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(34, 47);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "H";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(288, 298);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(34, 47);
-            this.button11.TabIndex = 9;
-            this.button11.Text = "G";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button12
-            // 
-            this.button12.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(528, 298);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(34, 47);
-            this.button12.TabIndex = 15;
-            this.button12.Text = "M";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(528, 351);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(34, 47);
-            this.button13.TabIndex = 28;
-            this.button13.Text = "Z";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(488, 351);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(34, 47);
-            this.button14.TabIndex = 27;
-            this.button14.Text = "Y";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button15
-            // 
-            this.button15.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(448, 351);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(34, 47);
-            this.button15.TabIndex = 26;
-            this.button15.Text = "X";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button16
-            // 
-            this.button16.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(408, 351);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(34, 47);
-            this.button16.TabIndex = 25;
-            this.button16.Text = "W";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button17
-            // 
-            this.button17.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(368, 351);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(34, 47);
-            this.button17.TabIndex = 24;
-            this.button17.Text = "V";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button18
-            // 
-            this.button18.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(328, 351);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(34, 47);
-            this.button18.TabIndex = 23;
-            this.button18.Text = "U";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button19
-            // 
-            this.button19.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Location = new System.Drawing.Point(288, 351);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(34, 47);
-            this.button19.TabIndex = 22;
-            this.button19.Text = "T";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button20
-            // 
-            this.button20.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(248, 351);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(34, 47);
-            this.button20.TabIndex = 21;
-            this.button20.Text = "S";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button21
-            // 
-            this.button21.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Location = new System.Drawing.Point(208, 351);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(34, 47);
-            this.button21.TabIndex = 20;
-            this.button21.Text = "R";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button22
-            // 
-            this.button22.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Location = new System.Drawing.Point(168, 351);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(34, 47);
-            this.button22.TabIndex = 19;
-            this.button22.Text = "Q";
-            this.button22.UseVisualStyleBackColor = true;
-            this.button22.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button23
-            // 
-            this.button23.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.Location = new System.Drawing.Point(128, 351);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(34, 47);
-            this.button23.TabIndex = 18;
-            this.button23.Text = "P";
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button24
-            // 
-            this.button24.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.Location = new System.Drawing.Point(88, 351);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(34, 47);
-            this.button24.TabIndex = 17;
-            this.button24.Text = "O";
-            this.button24.UseVisualStyleBackColor = true;
-            this.button24.Click += new System.EventHandler(this.guessClick);
-            // 
-            // button25
-            // 
-            this.button25.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.Location = new System.Drawing.Point(48, 351);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(34, 47);
-            this.button25.TabIndex = 16;
-            this.button25.Text = "N";
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.guessClick);
-            // 
             // hintLabel
             // 
-            this.hintLabel.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hintLabel.Location = new System.Drawing.Point(50, 211);
+            this.hintLabel.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hintLabel.Location = new System.Drawing.Point(229, 208);
             this.hintLabel.Name = "hintLabel";
-            this.hintLabel.Size = new System.Drawing.Size(232, 57);
+            this.hintLabel.Size = new System.Drawing.Size(247, 57);
             this.hintLabel.TabIndex = 29;
+            // 
+            // ButtonZ
+            // 
+            this.ButtonZ.BackColor = System.Drawing.Color.Indigo;
+            this.ButtonZ.FlatAppearance.BorderSize = 0;
+            this.ButtonZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonZ.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonZ.ForeColor = System.Drawing.Color.LightGreen;
+            this.ButtonZ.Location = new System.Drawing.Point(706, 375);
+            this.ButtonZ.Name = "ButtonZ";
+            this.ButtonZ.Size = new System.Drawing.Size(43, 47);
+            this.ButtonZ.TabIndex = 28;
+            this.ButtonZ.Text = "Z";
+            this.ButtonZ.UseVisualStyleBackColor = false;
+            this.ButtonZ.Click += new System.EventHandler(this.guessClick);
+            // 
+            // GamePanel
+            // 
+            this.GamePanel.Controls.Add(this.PictureBox);
+            this.GamePanel.Controls.Add(this.ButtonZ);
+            this.GamePanel.Controls.Add(this.hintLabel);
+            this.GamePanel.Controls.Add(this.wordPreviewLabel);
+            this.GamePanel.Controls.Add(this.ButtonY);
+            this.GamePanel.Controls.Add(this.ButtonX);
+            this.GamePanel.Controls.Add(this.ButtonA);
+            this.GamePanel.Controls.Add(this.ButtonH);
+            this.GamePanel.Controls.Add(this.ButtonL);
+            this.GamePanel.Controls.Add(this.ButtonW);
+            this.GamePanel.Controls.Add(this.ButtonM);
+            this.GamePanel.Controls.Add(this.ButtonK);
+            this.GamePanel.Controls.Add(this.ButtonV);
+            this.GamePanel.Controls.Add(this.ButtonN);
+            this.GamePanel.Controls.Add(this.ButtonB);
+            this.GamePanel.Controls.Add(this.ButtonJ);
+            this.GamePanel.Controls.Add(this.ButtonU);
+            this.GamePanel.Controls.Add(this.ButtonO);
+            this.GamePanel.Controls.Add(this.ButtonC);
+            this.GamePanel.Controls.Add(this.ButtonI);
+            this.GamePanel.Controls.Add(this.ButtonT);
+            this.GamePanel.Controls.Add(this.ButtonP);
+            this.GamePanel.Controls.Add(this.ButtonD);
+            this.GamePanel.Controls.Add(this.ButtonG);
+            this.GamePanel.Controls.Add(this.ButtonS);
+            this.GamePanel.Controls.Add(this.ButtonQ);
+            this.GamePanel.Controls.Add(this.ButtonE);
+            this.GamePanel.Controls.Add(this.ButtonF);
+            this.GamePanel.Controls.Add(this.ButtonR);
+            this.GamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GamePanel.Location = new System.Drawing.Point(0, 0);
+            this.GamePanel.Name = "GamePanel";
+            this.GamePanel.Size = new System.Drawing.Size(1018, 478);
+            this.GamePanel.TabIndex = 2;
+            this.GamePanel.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 417);
-            this.Controls.Add(this.hintLabel);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button16);
-            this.Controls.Add(this.button17);
-            this.Controls.Add(this.button18);
-            this.Controls.Add(this.button19);
-            this.Controls.Add(this.button20);
-            this.Controls.Add(this.button21);
-            this.Controls.Add(this.button22);
-            this.Controls.Add(this.button23);
-            this.Controls.Add(this.button24);
-            this.Controls.Add(this.button25);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.wordPreviewLabel);
-            this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cmdA);
-            this.Controls.Add(this.pictureBox);
+            this.BackColor = System.Drawing.Color.LightGreen;
+            this.ClientSize = new System.Drawing.Size(1018, 478);
+            this.Controls.Add(this.MainMenuPanel);
+            this.Controls.Add(this.GamePanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.MainMenuPanel.ResumeLayout(false);
+            this.MainMenuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
+            this.GamePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button cmdA;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.Button ScoreboardButton;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button OptionsButton;
+        private System.Windows.Forms.Label MainMenuLabel;
+        private System.Windows.Forms.Panel MainMenuPanel;
+        private System.Windows.Forms.Label GameTitleLabel;
+        private System.Windows.Forms.Button ButtonR;
+        private System.Windows.Forms.Button ButtonF;
+        private System.Windows.Forms.Button ButtonE;
+        private System.Windows.Forms.Button ButtonQ;
+        private System.Windows.Forms.Button ButtonS;
+        private System.Windows.Forms.Button ButtonG;
+        private System.Windows.Forms.Button ButtonD;
+        private System.Windows.Forms.Button ButtonP;
+        private System.Windows.Forms.Button ButtonT;
+        private System.Windows.Forms.Button ButtonI;
+        private System.Windows.Forms.Button ButtonC;
+        private System.Windows.Forms.Button ButtonO;
+        private System.Windows.Forms.Button ButtonU;
+        private System.Windows.Forms.Button ButtonJ;
+        private System.Windows.Forms.Button ButtonB;
+        private System.Windows.Forms.Button ButtonN;
+        private System.Windows.Forms.Button ButtonV;
+        private System.Windows.Forms.Button ButtonK;
+        private System.Windows.Forms.Button ButtonM;
+        private System.Windows.Forms.Button ButtonW;
+        private System.Windows.Forms.Button ButtonL;
+        private System.Windows.Forms.Button ButtonH;
+        private System.Windows.Forms.Button ButtonA;
+        private System.Windows.Forms.Button ButtonX;
+        private System.Windows.Forms.PictureBox PictureBox;
+        private System.Windows.Forms.Button ButtonY;
         private System.Windows.Forms.Label wordPreviewLabel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Label hintLabel;
+        private System.Windows.Forms.Button ButtonZ;
+        private System.Windows.Forms.Panel GamePanel;
     }
 }
 
