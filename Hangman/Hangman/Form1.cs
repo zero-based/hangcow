@@ -13,6 +13,11 @@ namespace Hangman
 {
     public partial class Form1 : Form
     {
+        private int wrongGuesses = 0;
+        private string[] words;
+        private string[] hints;
+        private string currentWord     = "";
+        private string currentWordCopy = "";
 
         private Bitmap[] hangmanAllImages = {Hangman.Properties.Resources.Hangman_0,
                                              Hangman.Properties.Resources.Hangman_1,
@@ -21,10 +26,6 @@ namespace Hangman
                                              Hangman.Properties.Resources.Hangman_4,
                                              Hangman.Properties.Resources.Hangman_5,
                                              Hangman.Properties.Resources.Hangman_6};
-        private int wrongGuesses = 0;
-        private string[] words;
-        private string currentWord;
-        private string currentWordCopy;
 
         public Form1()
         {
@@ -32,34 +33,41 @@ namespace Hangman
         }
 
 
-        private void loadWordsFromFile()
+        private void loadFile()
         {
             string[] allLines = File.ReadAllLines("Words.txt");
 
             words = new string[allLines.Length];
+            hints = new string[allLines.Length];
 
             int index = 0; 
             foreach (string currentLine in allLines)
             {
                 string[] column = currentLine.Split(',');
-                words[index++] = column[0];
+                words[index] = column[0];
+                hints[index] = column[1];
+                index++;
             }
 
         }
 
         private void setUpWordChoice()
         {
-            wrongGuesses = 0;
+            //reseting wrong guesses and image
+            wrongGuesses     = 0;
             pictureBox.Image = hangmanAllImages[wrongGuesses];
             
-
-            Random rnd = new Random();
+            //picking up a random word from "words array"
+            Random rnd   = new Random();
             int rndIndex = rnd.Next(words.Length);
+            currentWord  = words[rndIndex];
 
-            currentWord = words[rndIndex];
+            //display Hint
+            hintLabel.Text = "";
+            hintLabel.Text = "HINT: " + hints[rndIndex];
 
-            currentWordCopy = "";
-
+            //initialzing the currentWordCopy with blank spaces
+            //according to number of letters in the original word
             for (int index = 0; index < currentWord.Length; index++)
             {
                 currentWordCopy += "_";
@@ -73,32 +81,39 @@ namespace Hangman
             for (int index = 0; index < currentWord.Length; index++)
             {
                 wordPreviewLabel.Text += currentWordCopy.Substring(index, 1);
-                wordPreviewLabel.Text += " ";
+                if (index != currentWord.Length - 1)
+                    wordPreviewLabel.Text += " ";
             }
 
         }
 
 
+        private void updateCopy(char letter)
+        {
+
+            char[] currentWordTEMP     = currentWord.ToCharArray();
+            char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
+
+            for (int index = 0; index < currentWordTEMP.Length; index++)
+            {
+                if (letter == currentWordTEMP[index])
+                    currentWordCopyTEMP[index] = letter;
+            }
+
+            currentWordCopy = new string(currentWordCopyTEMP);
+
+        }
+
         private void guessClick(object sender, EventArgs e)
         {
-            Button choice  = sender as Button;
-            choice.Enabled = false;
+            Button choice      = sender as Button;
+            choice.Enabled     = false;
+            char enteredLetter = choice.Text[0];
 
-            if (currentWord.Contains(choice.Text))
+            if (currentWord.Contains(enteredLetter))
             {
-                char enteredLetter         = choice.Text[0];
-                char[] currentWordTEMP     = currentWord.ToCharArray();
-                char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
-
-                for (int index = 0; index < currentWordTEMP.Length; index++)
-                {
-                    if (enteredLetter == currentWordTEMP[index])
-                        currentWordCopyTEMP[index] = enteredLetter;
-                }
-
-                currentWordCopy = new string(currentWordCopyTEMP);
+                updateCopy(enteredLetter);
                 displayWord();
-
             }
             else
                 wrongGuesses++;
@@ -114,7 +129,7 @@ namespace Hangman
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            loadWordsFromFile();
+            loadFile();
             setUpWordChoice();
         }
 

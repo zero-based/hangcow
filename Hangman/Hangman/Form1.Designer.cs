@@ -57,6 +57,7 @@
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
+            this.hintLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             this.wordPreviewLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.wordPreviewLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.wordPreviewLabel.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wordPreviewLabel.Location = new System.Drawing.Point(48, 222);
+            this.wordPreviewLabel.Location = new System.Drawing.Point(48, 165);
             this.wordPreviewLabel.Name = "wordPreviewLabel";
             this.wordPreviewLabel.Size = new System.Drawing.Size(234, 46);
             this.wordPreviewLabel.TabIndex = 4;
@@ -378,11 +379,20 @@
             this.button25.UseVisualStyleBackColor = true;
             this.button25.Click += new System.EventHandler(this.guessClick);
             // 
+            // hintLabel
+            // 
+            this.hintLabel.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hintLabel.Location = new System.Drawing.Point(50, 211);
+            this.hintLabel.Name = "hintLabel";
+            this.hintLabel.Size = new System.Drawing.Size(232, 57);
+            this.hintLabel.TabIndex = 29;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 417);
+            this.Controls.Add(this.hintLabel);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button15);
@@ -451,6 +461,7 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Label hintLabel;
     }
 }
 
