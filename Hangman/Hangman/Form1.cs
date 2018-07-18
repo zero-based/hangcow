@@ -16,8 +16,9 @@ namespace Hangman
         private int wrongGuesses = 0;
         private string[] words;
         private string[] hints;
-        private string currentWord     = "";
+        private string currentWord = "";
         private string currentWordCopy = "";
+        private int score = 0;
 
         private Bitmap[] hangmanAllImages = {Hangman.Properties.Resources.Hangman_0,
                                              Hangman.Properties.Resources.Hangman_1,
@@ -32,7 +33,6 @@ namespace Hangman
             InitializeComponent();
         }
 
-
         private void loadFile()
         {
             string[] allLines = File.ReadAllLines("Words.txt");
@@ -40,7 +40,7 @@ namespace Hangman
             words = new string[allLines.Length];
             hints = new string[allLines.Length];
 
-            int index = 0; 
+            int index = 0;
             foreach (string currentLine in allLines)
             {
                 string[] column = currentLine.Split(',');
@@ -51,19 +51,59 @@ namespace Hangman
 
         }
 
+        private void resetAll()
+        {
+            //reset trials and images
+            wrongGuesses = 0;
+            PictureBox.Image = hangmanAllImages[wrongGuesses];
+
+            //reset words and hints
+            currentWord = "";
+            currentWordCopy = "";
+            wordPreviewLabel.Text = "";
+            hintLabel.Text = "";
+
+            //reseting buttons
+            ButtonA.Enabled = true;
+            ButtonB.Enabled = true;
+            ButtonC.Enabled = true;
+            ButtonD.Enabled = true;
+            ButtonE.Enabled = true;
+            ButtonF.Enabled = true;
+            ButtonG.Enabled = true;
+            ButtonH.Enabled = true;
+            ButtonI.Enabled = true;
+            ButtonJ.Enabled = true;
+            ButtonK.Enabled = true;
+            ButtonL.Enabled = true;
+            ButtonM.Enabled = true;
+            ButtonN.Enabled = true;
+            ButtonO.Enabled = true;
+            ButtonP.Enabled = true;
+            ButtonQ.Enabled = true;
+            ButtonR.Enabled = true;
+            ButtonS.Enabled = true;
+            ButtonT.Enabled = true;
+            ButtonU.Enabled = true;
+            ButtonV.Enabled = true;
+            ButtonW.Enabled = true;
+            ButtonX.Enabled = true;
+            ButtonY.Enabled = true;
+            ButtonZ.Enabled = true;
+            NextLevelButton.Enabled = false;
+        }
+
         private void setUpWordChoice()
         {
-            //reseting wrong guesses and image
-            wrongGuesses     = 0;
-            PictureBox.Image = hangmanAllImages[wrongGuesses];
-            
-            //picking up a random word from "words array"
-            Random rnd   = new Random();
-            int rndIndex = rnd.Next(words.Length);
-            currentWord  = words[rndIndex];
+            //reseting all data
+            resetAll();
 
-            //display Hint
-            hintLabel.Text = "";
+            //picking up a random word from "words array"
+            Random rnd = new Random();
+            int rndIndex = rnd.Next(0, words.Length);
+            currentWord = words[rndIndex];
+
+            //display its Hint
             hintLabel.Text = "HINT: " + hints[rndIndex];
 
             //initialzing the currentWordCopy with blank spaces
@@ -87,11 +127,10 @@ namespace Hangman
 
         }
 
-
         private void updateCopy(char letter)
         {
 
-            char[] currentWordTEMP     = currentWord.ToCharArray();
+            char[] currentWordTEMP = currentWord.ToCharArray();
             char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
 
             for (int index = 0; index < currentWordTEMP.Length; index++)
@@ -106,22 +145,29 @@ namespace Hangman
 
         private void guessClick(object sender, EventArgs e)
         {
-            Button choice      = sender as Button;
-            choice.Enabled     = false;
+            Button choice = sender as Button;
+            choice.Enabled = false;
             char enteredLetter = choice.Text[0];
 
             if (currentWord.Contains(enteredLetter))
             {
                 updateCopy(enteredLetter);
                 displayWord();
+                score += 5;
+                ScoreLabel.Text = "";
+                ScoreLabel.Text = score.ToString();
             }
             else
                 wrongGuesses++;
 
             if (currentWordCopy.Equals(currentWord))
             {
+                score += 50;
                 wordPreviewLabel.Text = "";
                 wordPreviewLabel.Text = "You Won!";
+                ScoreLabel.Text = "";
+                ScoreLabel.Text = score.ToString();
+                NextLevelButton.Enabled = true;
             }
             else
             {
@@ -144,7 +190,8 @@ namespace Hangman
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            GamePanel.Visible     = true;
+            GamePanel.Visible     = false;
+            NicknamePanel.Visible = true;
             MainMenuPanel.Visible = false;
         }
 
@@ -153,8 +200,25 @@ namespace Hangman
             this.Close();
         }
 
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            GamePanel.Visible     = false;
+            NicknamePanel.Visible = false;
+            MainMenuPanel.Visible = true;
+        }
 
+        private void NextLevelButton_Click(object sender, EventArgs e)
+        {
+            setUpWordChoice();
+        }
 
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+            GamePanel.Visible     = true;
+            NicknamePanel.Visible = false;
+            MainMenuPanel.Visible = false;
+        }
 
     }
+    
 }

@@ -7,3 +7,6 @@ c:\users\youssef\documents\visual studio 2013\Projects\Hangman\Hangman\bin\Debug
 c:\users\youssef\documents\visual studio 2013\Projects\Hangman\Hangman\obj\Debug\Hangman.exe
 c:\users\youssef\documents\visual studio 2013\Projects\Hangman\Hangman\obj\Debug\Hangman.pdb
 C:\Users\youssef\documents\visual studio 2013\Projects\Hangman\Hangman\obj\Debug\Hangman.Form1.resources
+C:\Users\youssef\Desktop\Hangman\Hangman\bin\Debug\Hangman.exe.config
+C:\Users\youssef\Desktop\Hangman\Hangman\obj\Debug\Hangman.exe
+C:\Users\youssef\Desktop\Hangman\Hangman\obj\Debug\Hangman.pdb
