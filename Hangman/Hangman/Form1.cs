@@ -16,9 +16,11 @@ namespace Hangman
         private int wrongGuesses = 0;
         private string[] words;
         private string[] hints;
+        private string[] nicknames;
+        private int[] scores;
         private string currentWord = "";
         private string currentWordCopy = "";
-        private int score = 0;
+        private int currentScore = 0;
 
         private Bitmap[] hangmanAllImages = {Hangman.Properties.Resources.Hangman_0,
                                              Hangman.Properties.Resources.Hangman_1,
@@ -33,7 +35,34 @@ namespace Hangman
             InitializeComponent();
         }
 
-        private void loadFile()
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            loadWordsFile();
+            setUpWordChoice();
+        }
+
+
+        private int getPlayerIndex(string name)
+        {
+            int index;
+
+            loadScoreBoardFile();
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            for (int i = 0; i < allLines.Length; i++)
+            {
+                if (name == nicknames[i]) //old player index
+                {
+                    index = i;
+                    return index;
+                }
+            }
+
+            index = -1;  //new player
+            return index;
+        }
+
+        private void loadWordsFile()
         {
             string[] allLines = File.ReadAllLines("Words.txt");
 
@@ -49,6 +78,39 @@ namespace Hangman
                 index++;
             }
 
+        }
+
+        private void loadScoreBoardFile()
+        {
+            File.AppendAllText("ScoreBoard.txt", "");  //creates the file if it doesn't exist
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            nicknames = new string[allLines.Length];
+            scores = new int[allLines.Length];
+
+            int index = 0;
+            foreach (string currentLine in allLines)
+            {
+                string[] column = currentLine.Split(',');
+                nicknames[index] = column[0];
+                scores[index] = Convert.ToInt32(column[1]);
+                index++;
+            }
+
+        }
+
+        private void writeToScoreBoardFile()
+        {
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            //remove old data
+            File.WriteAllText("ScoreBoard.txt", "");
+
+            //export the new data
+            for (int i = 0; i < allLines.Length; i++)
+            {
+                File.AppendAllText("ScoreBoard.txt", nicknames[i] + "," + scores[i] + Environment.NewLine);
+            }
         }
 
         private void resetAll()
@@ -143,6 +205,33 @@ namespace Hangman
 
         }
 
+
+
+        //Panels
+        private void showGamePanel()
+        {
+            GamePanel.Visible = true;
+            NicknamePanel.Visible = false;
+            MainMenuPanel.Visible = false;
+        }
+
+        private void showMainMenuPanel()
+        {
+            GamePanel.Visible = false;
+            NicknamePanel.Visible = false;
+            MainMenuPanel.Visible = true;
+        }
+
+        private void showNicknamePanel()
+        {
+            GamePanel.Visible = false;
+            NicknamePanel.Visible = true;
+            MainMenuPanel.Visible = false;
+        }
+
+
+
+        //Buttons Events
         private void guessClick(object sender, EventArgs e)
         {
             Button choice = sender as Button;
@@ -153,20 +242,20 @@ namespace Hangman
             {
                 updateCopy(enteredLetter);
                 displayWord();
-                score += 5;
+                currentScore += 5;
                 ScoreLabel.Text = "";
-                ScoreLabel.Text = score.ToString();
+                ScoreLabel.Text = currentScore.ToString();
             }
             else
                 wrongGuesses++;
 
             if (currentWordCopy.Equals(currentWord))
             {
-                score += 50;
+                currentScore += 50;
                 wordPreviewLabel.Text = "";
                 wordPreviewLabel.Text = "You Won!";
                 ScoreLabel.Text = "";
-                ScoreLabel.Text = score.ToString();
+                ScoreLabel.Text = currentScore.ToString();
                 NextLevelButton.Enabled = true;
             }
             else
@@ -182,12 +271,6 @@ namespace Hangman
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            loadFile();
-            setUpWordChoice();
-        }
-
         private void StartButton_Click(object sender, EventArgs e)
         {
             GamePanel.Visible     = false;
@@ -195,29 +278,44 @@ namespace Hangman
             MainMenuPanel.Visible = false;
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+        private void PlayButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
 
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            GamePanel.Visible     = false;
-            NicknamePanel.Visible = false;
-            MainMenuPanel.Visible = true;
+            if (string.IsNullOrEmpty(NicknameTextBox.Text))
+                NicknameLabel.Text = "Name Not Valid!";
+            else
+            {
+                showGamePanel();
+                if (getPlayerIndex(NicknameTextBox.Text) == -1)
+                    File.AppendAllText("ScoreBoard.txt", NicknameTextBox.Text + "," + currentScore + Environment.NewLine);
+            }
+
         }
 
         private void NextLevelButton_Click(object sender, EventArgs e)
         {
             setUpWordChoice();
+            int playerIndex = getPlayerIndex(NicknameTextBox.Text);
+            scores[playerIndex] += currentScore;
+            writeToScoreBoardFile();
         }
 
-        private void PlayButton_Click(object sender, EventArgs e)
+        private void BackButton_Click(object sender, EventArgs e)
         {
-            GamePanel.Visible     = true;
-            NicknamePanel.Visible = false;
-            MainMenuPanel.Visible = false;
+            showMainMenuPanel();
+
+            //reset All data
+            currentScore = 0;
+            NicknameTextBox.Text = "";
+            resetAll();
         }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
 
     }
     

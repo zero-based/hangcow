@@ -34,6 +34,7 @@
             this.OptionsButton = new System.Windows.Forms.Button();
             this.MainMenuLabel = new System.Windows.Forms.Label();
             this.NicknamePanel = new System.Windows.Forms.Panel();
+            this.PlayButton = new System.Windows.Forms.Button();
             this.NicknameTextBox = new System.Windows.Forms.TextBox();
             this.NicknameLabel = new System.Windows.Forms.Label();
             this.GameTitleLabel = new System.Windows.Forms.Label();
@@ -66,13 +67,12 @@
             this.hintLabel = new System.Windows.Forms.Label();
             this.ButtonZ = new System.Windows.Forms.Button();
             this.GamePanel = new System.Windows.Forms.Panel();
+            this.PictureBox = new System.Windows.Forms.PictureBox();
             this.ScoreWordLabel = new System.Windows.Forms.Label();
+            this.ScoreLabel = new System.Windows.Forms.Label();
             this.NextLevelButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
-            this.ScoreLabel = new System.Windows.Forms.Label();
-            this.PictureBox = new System.Windows.Forms.PictureBox();
             this.MainMenuPanel = new System.Windows.Forms.Panel();
-            this.PlayButton = new System.Windows.Forms.Button();
             this.NicknamePanel.SuspendLayout();
             this.GamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
@@ -161,6 +161,21 @@
             this.NicknamePanel.Size = new System.Drawing.Size(880, 665);
             this.NicknamePanel.TabIndex = 0;
             this.NicknamePanel.Visible = false;
+            // 
+            // PlayButton
+            // 
+            this.PlayButton.BackColor = System.Drawing.Color.Indigo;
+            this.PlayButton.FlatAppearance.BorderSize = 0;
+            this.PlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PlayButton.Font = new System.Drawing.Font("Cairo Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayButton.ForeColor = System.Drawing.Color.LightGreen;
+            this.PlayButton.Location = new System.Drawing.Point(263, 443);
+            this.PlayButton.Name = "PlayButton";
+            this.PlayButton.Size = new System.Drawing.Size(361, 72);
+            this.PlayButton.TabIndex = 41;
+            this.PlayButton.Text = "Play";
+            this.PlayButton.UseVisualStyleBackColor = false;
+            this.PlayButton.Click += new System.EventHandler(this.PlayButton_Click);
             // 
             // NicknameTextBox
             // 
@@ -650,6 +665,16 @@
             this.GamePanel.TabIndex = 2;
             this.GamePanel.Visible = false;
             // 
+            // PictureBox
+            // 
+            this.PictureBox.Image = global::Hangman.Properties.Resources.Hangman_0;
+            this.PictureBox.Location = new System.Drawing.Point(272, 24);
+            this.PictureBox.Name = "PictureBox";
+            this.PictureBox.Size = new System.Drawing.Size(341, 351);
+            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PictureBox.TabIndex = 0;
+            this.PictureBox.TabStop = false;
+            // 
             // ScoreWordLabel
             // 
             this.ScoreWordLabel.Font = new System.Drawing.Font("Cairo SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -660,6 +685,17 @@
             this.ScoreWordLabel.TabIndex = 30;
             this.ScoreWordLabel.Text = "Score";
             this.ScoreWordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ScoreLabel
+            // 
+            this.ScoreLabel.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoreLabel.ForeColor = System.Drawing.Color.Indigo;
+            this.ScoreLabel.Location = new System.Drawing.Point(740, 50);
+            this.ScoreLabel.Name = "ScoreLabel";
+            this.ScoreLabel.Size = new System.Drawing.Size(119, 56);
+            this.ScoreLabel.TabIndex = 31;
+            this.ScoreLabel.Text = "0";
+            this.ScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NextLevelButton
             // 
@@ -674,6 +710,7 @@
             this.NextLevelButton.TabIndex = 33;
             this.NextLevelButton.Text = "Next Level";
             this.NextLevelButton.UseVisualStyleBackColor = false;
+            this.NextLevelButton.Click += new System.EventHandler(this.NextLevelButton_Click);
             // 
             // BackButton
             // 
@@ -688,27 +725,7 @@
             this.BackButton.TabIndex = 32;
             this.BackButton.Text = "<";
             this.BackButton.UseVisualStyleBackColor = false;
-            // 
-            // ScoreLabel
-            // 
-            this.ScoreLabel.Font = new System.Drawing.Font("Cairo Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ScoreLabel.ForeColor = System.Drawing.Color.Indigo;
-            this.ScoreLabel.Location = new System.Drawing.Point(740, 50);
-            this.ScoreLabel.Name = "ScoreLabel";
-            this.ScoreLabel.Size = new System.Drawing.Size(119, 56);
-            this.ScoreLabel.TabIndex = 31;
-            this.ScoreLabel.Text = "0";
-            this.ScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PictureBox
-            // 
-            this.PictureBox.Image = global::Hangman.Properties.Resources.Hangman_0;
-            this.PictureBox.Location = new System.Drawing.Point(272, 24);
-            this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(341, 351);
-            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PictureBox.TabIndex = 0;
-            this.PictureBox.TabStop = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // MainMenuPanel
             // 
@@ -723,21 +740,6 @@
             this.MainMenuPanel.Name = "MainMenuPanel";
             this.MainMenuPanel.Size = new System.Drawing.Size(880, 665);
             this.MainMenuPanel.TabIndex = 39;
-            // 
-            // PlayButton
-            // 
-            this.PlayButton.BackColor = System.Drawing.Color.Indigo;
-            this.PlayButton.FlatAppearance.BorderSize = 0;
-            this.PlayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayButton.Font = new System.Drawing.Font("Cairo Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayButton.ForeColor = System.Drawing.Color.LightGreen;
-            this.PlayButton.Location = new System.Drawing.Point(263, 443);
-            this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(361, 72);
-            this.PlayButton.TabIndex = 41;
-            this.PlayButton.Text = "Play";
-            this.PlayButton.UseVisualStyleBackColor = false;
-            this.PlayButton.Click += new System.EventHandler(this.PlayButton_Click);
             // 
             // Form1
             // 
