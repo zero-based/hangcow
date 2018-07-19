@@ -18,7 +18,7 @@ namespace Hangman
         private string[] hints;
         private string[] nicknames;
         private int[] scores;
-        private string currentWord = "";
+        private string currentWord     = "";
         private string currentWordCopy = "";
         private int currentScore = 0;
 
@@ -42,25 +42,7 @@ namespace Hangman
         }
 
 
-        private int getPlayerIndex(string name)
-        {
-            int index;
 
-            loadScoreBoardFile();
-            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
-
-            for (int i = 0; i < allLines.Length; i++)
-            {
-                if (name == nicknames[i]) //old player index
-                {
-                    index = i;
-                    return index;
-                }
-            }
-
-            index = -1;  //new player
-            return index;
-        }
 
         private void loadWordsFile()
         {
@@ -86,22 +68,44 @@ namespace Hangman
             string[] allLines = File.ReadAllLines("ScoreBoard.txt");
 
             nicknames = new string[allLines.Length];
-            scores = new int[allLines.Length];
+            scores    = new int   [allLines.Length];
 
             int index = 0;
             foreach (string currentLine in allLines)
             {
-                string[] column = currentLine.Split(',');
+                string[] column  = currentLine.Split(',');
                 nicknames[index] = column[0];
-                scores[index] = Convert.ToInt32(column[1]);
+                scores[index]    = Convert.ToInt32(column[1]);
                 index++;
             }
 
         }
 
-        private void writeToScoreBoardFile()
+        private int getPlayerIndex(string name)
         {
+            int index;
+
+            loadScoreBoardFile();
             string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            for (int i = 0; i < allLines.Length; i++)
+            {
+                if (name == nicknames[i]) //old player index
+                {
+                    index = i;
+                    return index;
+                }
+            }
+
+            index = -1;  //new player
+            return index;
+        }
+
+        private void updateCurrentPlayerScoreInFile()
+        {
+            int playerIndex     = getPlayerIndex(NicknameTextBox.Text);
+            scores[playerIndex] = currentScore;
+            string[] allLines   = File.ReadAllLines("ScoreBoard.txt");
 
             //remove old data
             File.WriteAllText("ScoreBoard.txt", "");
@@ -120,10 +124,10 @@ namespace Hangman
             PictureBox.Image = hangmanAllImages[wrongGuesses];
 
             //reset words and hints
-            currentWord = "";
-            currentWordCopy = "";
+            currentWord           = "";
+            currentWordCopy       = "";
             wordPreviewLabel.Text = "";
-            hintLabel.Text = "";
+            hintLabel.Text        = "";
 
             //reseting buttons
             ButtonA.Enabled = true;
@@ -161,9 +165,9 @@ namespace Hangman
             resetAll();
 
             //picking up a random word from "words array"
-            Random rnd = new Random();
+            Random rnd   = new Random();
             int rndIndex = rnd.Next(0, words.Length);
-            currentWord = words[rndIndex];
+            currentWord  = words[rndIndex];
 
             //display its Hint
             hintLabel.Text = "HINT: " + hints[rndIndex];
@@ -192,7 +196,7 @@ namespace Hangman
         private void updateCopy(char letter)
         {
 
-            char[] currentWordTEMP = currentWord.ToCharArray();
+            char[] currentWordTEMP     = currentWord.ToCharArray();
             char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
 
             for (int index = 0; index < currentWordTEMP.Length; index++)
@@ -205,28 +209,54 @@ namespace Hangman
 
         }
 
+        private void displayScoreBoardData()
+        {
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            AllNicknamesLabel.Text += "\n";
+            AllScoresLabel.   Text += "\n"; 
+
+            for (int i = 0; i < allLines.Length; i++)
+            {
+                AllNicknamesLabel.Text += nicknames[i] + "\n";
+                AllScoresLabel.   Text += scores   [i] + "\n";     
+            }
+        }
+
+
 
 
         //Panels
         private void showGamePanel()
         {
-            GamePanel.Visible = true;
-            NicknamePanel.Visible = false;
-            MainMenuPanel.Visible = false;
+            GamePanel.Visible       = true;
+            NicknamePanel.Visible   = false;
+            MainMenuPanel.Visible   = false;
+            ScoreBoardPanel.Visible = false;
         }
 
         private void showMainMenuPanel()
         {
-            GamePanel.Visible = false;
-            NicknamePanel.Visible = false;
-            MainMenuPanel.Visible = true;
+            MainMenuPanel.Visible   = true;
+            GamePanel.Visible       = false;
+            NicknamePanel.Visible   = false;
+            ScoreBoardPanel.Visible = false;
         }
 
         private void showNicknamePanel()
         {
-            GamePanel.Visible = false;
-            NicknamePanel.Visible = true;
-            MainMenuPanel.Visible = false;
+            NicknamePanel.Visible   = true;
+            GamePanel.Visible       = false;
+            MainMenuPanel.Visible   = false;
+            ScoreBoardPanel.Visible = false;
+        }
+
+        private void showScoreBoardPanel()
+        {
+            ScoreBoardPanel.Visible = true;
+            GamePanel.Visible       = false;
+            NicknamePanel.Visible   = false;
+            MainMenuPanel.Visible   = false;
         }
 
 
@@ -234,29 +264,31 @@ namespace Hangman
         //Buttons Events
         private void guessClick(object sender, EventArgs e)
         {
-            Button choice = sender as Button;
-            choice.Enabled = false;
+            Button choice      = sender as Button;
+            choice.Enabled     = false;
             char enteredLetter = choice.Text[0];
 
             if (currentWord.Contains(enteredLetter))
             {
                 updateCopy(enteredLetter);
                 displayWord();
-                currentScore += 5;
+                currentScore   += 5;
                 ScoreLabel.Text = "";
                 ScoreLabel.Text = currentScore.ToString();
+                updateCurrentPlayerScoreInFile();
             }
             else
                 wrongGuesses++;
 
             if (currentWordCopy.Equals(currentWord))
             {
-                currentScore += 50;
-                wordPreviewLabel.Text = "";
-                wordPreviewLabel.Text = "You Won!";
-                ScoreLabel.Text = "";
-                ScoreLabel.Text = currentScore.ToString();
+                currentScore           += 50;
+                wordPreviewLabel.Text   = "";
+                wordPreviewLabel.Text   = "You Won!";
+                ScoreLabel.Text         = "";
+                ScoreLabel.Text         = currentScore.ToString();
                 NextLevelButton.Enabled = true;
+                updateCurrentPlayerScoreInFile();
             }
             else
             {
@@ -273,9 +305,7 @@ namespace Hangman
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            GamePanel.Visible     = false;
-            NicknamePanel.Visible = true;
-            MainMenuPanel.Visible = false;
+            showNicknamePanel();
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
@@ -295,19 +325,28 @@ namespace Hangman
         private void NextLevelButton_Click(object sender, EventArgs e)
         {
             setUpWordChoice();
-            int playerIndex = getPlayerIndex(NicknameTextBox.Text);
-            scores[playerIndex] += currentScore;
-            writeToScoreBoardFile();
+        }
+
+        private void ScoreboardButton_Click(object sender, EventArgs e)
+        {
+            showScoreBoardPanel();
+            loadScoreBoardFile();
+            displayScoreBoardData();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
             showMainMenuPanel();
+            updateCurrentPlayerScoreInFile();
 
-            //reset All data
-            currentScore = 0;
+            //reset GamePanel data
+            currentScore         = 0;
             NicknameTextBox.Text = "";
             resetAll();
+
+            //reset ScoreBoard Panel data
+            AllNicknamesLabel.Text = "Nicknames";
+            AllScoresLabel.   Text = "Scores"; 
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
