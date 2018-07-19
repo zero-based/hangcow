@@ -13,15 +13,15 @@ namespace Hangman
 {
     public partial class Form1 : Form
     {
-        private int wrongGuesses = 0;
+        private int    wrongGuesses    = 0;
+        private int    currentScore    = 0;
+        private string currentWord     = "";
+        private string currentWordCopy = "";
         private string[] words;
         private string[] hints;
         private string[] nicknames;
-        private int[] scores;
-        private string currentWord     = "";
-        private string currentWordCopy = "";
-        private int currentScore = 0;
-
+        private int   [] scores;
+        
         private Bitmap[] hangmanAllImages = {Hangman.Properties.Resources.Hangman_0,
                                              Hangman.Properties.Resources.Hangman_1,
                                              Hangman.Properties.Resources.Hangman_2,
@@ -40,7 +40,6 @@ namespace Hangman
             loadWordsFile();
             setUpWordChoice();
         }
-
 
 
 
@@ -209,17 +208,44 @@ namespace Hangman
 
         }
 
-        private void displayScoreBoardData()
+        private void displayRecentScoreBoardData()
         {
             string[] allLines = File.ReadAllLines("ScoreBoard.txt");
-
-            AllNicknamesLabel.Text += "\n";
-            AllScoresLabel.   Text += "\n"; 
-
-            for (int i = 0; i < allLines.Length; i++)
+            int numberOfPlayers = 5;
+            for (int i = allLines.Length - 1; i >= allLines.Length - numberOfPlayers; i--)
             {
-                AllNicknamesLabel.Text += nicknames[i] + "\n";
-                AllScoresLabel.   Text += scores   [i] + "\n";     
+                RecentNicknamesLabel.Text += nicknames[i] + "\n";
+                RecentScoresLabel   .Text += scores   [i] + "\n";     
+            }
+
+        }
+
+        private void displayTopScoreBoarData()
+        {
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+            int numberOfPlayers = 3;
+
+            for (int i = 0; i <= allLines.Length; i++)
+            {
+                for (int j = 0; j < allLines.Length - 1; j++)
+                {
+                    if (scores[j] < scores[j + 1])
+                    {
+                        int scoreTEMP = scores[j];
+                        scores[j]     = scores[j + 1];
+                        scores[j + 1] = scoreTEMP;
+
+                        string nicknameTEMP = nicknames[j];
+                        nicknames[j]        = nicknames[j + 1];
+                        nicknames[j + 1]    = nicknameTEMP;
+
+                    }
+                }
+            }
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                TopNicknamesLabel.Text += nicknames[i] + "\n";
+                TopScoresLabel   .Text += scores   [i] + "\n";
             }
         }
 
@@ -227,36 +253,50 @@ namespace Hangman
 
 
         //Panels
-        private void showGamePanel()
-        {
-            GamePanel.Visible       = true;
-            NicknamePanel.Visible   = false;
-            MainMenuPanel.Visible   = false;
-            ScoreBoardPanel.Visible = false;
-        }
-
         private void showMainMenuPanel()
         {
-            MainMenuPanel.Visible   = true;
-            GamePanel.Visible       = false;
-            NicknamePanel.Visible   = false;
+            MainMenuPanel  .Visible = true;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = false;
             ScoreBoardPanel.Visible = false;
+            HowToPlayPanel .Visible = false;
+        }
+
+        private void showGamePanel()
+        {
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = true;
+            NicknamePanel  .Visible = false;
+            ScoreBoardPanel.Visible = false;
+            HowToPlayPanel .Visible = false;
         }
 
         private void showNicknamePanel()
         {
-            NicknamePanel.Visible   = true;
-            GamePanel.Visible       = false;
-            MainMenuPanel.Visible   = false;
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = true;
             ScoreBoardPanel.Visible = false;
+            HowToPlayPanel .Visible = false;
         }
 
         private void showScoreBoardPanel()
         {
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = false;
             ScoreBoardPanel.Visible = true;
-            GamePanel.Visible       = false;
-            NicknamePanel.Visible   = false;
-            MainMenuPanel.Visible   = false;
+            HowToPlayPanel .Visible = false;
+
+        }
+
+        private void showHowToPlayPanel()
+        {
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = false;
+            ScoreBoardPanel.Visible = false;
+            HowToPlayPanel .Visible = true;
         }
 
 
@@ -331,29 +371,34 @@ namespace Hangman
         {
             showScoreBoardPanel();
             loadScoreBoardFile();
-            displayScoreBoardData();
+            displayRecentScoreBoardData();
+            displayTopScoreBoarData();
+        }
+
+        private void HowToPlayButton_Click(object sender, EventArgs e)
+        {
+            showHowToPlayPanel();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
             showMainMenuPanel();
-            updateCurrentPlayerScoreInFile();
 
             //reset GamePanel data
-            currentScore         = 0;
-            NicknameTextBox.Text = "";
+            currentScore = 0;
             resetAll();
 
             //reset ScoreBoard Panel data
-            AllNicknamesLabel.Text = "Nicknames";
-            AllScoresLabel.   Text = "Scores"; 
+            TopNicknamesLabel.Text = "";
+            TopScoresLabel.Text = "";
+            RecentNicknamesLabel.Text = "";
+            RecentScoresLabel.Text = "";
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
 
 
     }
