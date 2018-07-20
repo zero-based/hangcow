@@ -1,6 +1,6 @@
 ﻿namespace Hangman
 {
-    partial class Form1
+    partial class HangmanForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HangmanForm));
             this.StartButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.HowToPlayButton = new System.Windows.Forms.Button();
@@ -725,10 +725,13 @@
             // 
             // PictureBox
             // 
-            this.PictureBox.Location = new System.Drawing.Point(272, 24);
+            this.PictureBox.ErrorImage = null;
+            this.PictureBox.Image = global::Hangman.Properties.Resources.Hangman_0;
+            this.PictureBox.InitialImage = null;
+            this.PictureBox.Location = new System.Drawing.Point(263, 33);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(341, 351);
-            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PictureBox.Size = new System.Drawing.Size(348, 346);
+            this.PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBox.TabIndex = 0;
             this.PictureBox.TabStop = false;
             // 
@@ -947,20 +950,21 @@
             this.RecentScoresLabel.Size = new System.Drawing.Size(249, 198);
             this.RecentScoresLabel.TabIndex = 48;
             // 
-            // Form1
+            // HangmanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(880, 665);
+            this.Controls.Add(this.GamePanel);
+            this.Controls.Add(this.NicknamePanel);
             this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.BackButton);
-            this.Controls.Add(this.NicknamePanel);
             this.Controls.Add(this.HowToPlayPanel);
             this.Controls.Add(this.ScoreBoardPanel);
-            this.Controls.Add(this.GamePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "HangmanForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.NicknamePanel.ResumeLayout(false);
             this.NicknamePanel.PerformLayout();
             this.GamePanel.ResumeLayout(false);

@@ -7,25 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.IO;
 
 namespace Hangman
 {
-    public partial class Form1 : Form
+    public partial class HangmanForm : Form
     {
 
-        public Form1()
+        public HangmanForm()
         {
             InitializeComponent();
         }
 
-        private Random rnd = new Random();
         private int    randomIndex;
         private int    wrongGuesses     = 0;
         private int    currentScore     = 0;
         private string currentWord      = "";
         private string currentWordCopy  = "";
         private string chosenDifficulty = "";
+        private bool   isDifficultyRadioButtonChecked;
         private string[] words;
         private string[] hints;
         private string[] nicknames;
@@ -79,7 +80,7 @@ namespace Hangman
             //picking up a random word from "words array" without repetition
             do
             {
-                randomIndex = rnd.Next(0, words.Length);
+                randomIndex = new Random().Next(words.Length);
             } while (usedWordsIndexes.Contains(randomIndex));
             currentWord = words[randomIndex];
 
@@ -202,6 +203,36 @@ namespace Hangman
             NextLevelButton.Enabled = false;
         }
 
+        private void gameOver()
+        {
+            ButtonA.Enabled = false;
+            ButtonB.Enabled = false;
+            ButtonC.Enabled = false;
+            ButtonD.Enabled = false;
+            ButtonE.Enabled = false;
+            ButtonF.Enabled = false;
+            ButtonG.Enabled = false;
+            ButtonH.Enabled = false;
+            ButtonI.Enabled = false;
+            ButtonJ.Enabled = false;
+            ButtonK.Enabled = false;
+            ButtonL.Enabled = false;
+            ButtonM.Enabled = false;
+            ButtonN.Enabled = false;
+            ButtonO.Enabled = false;
+            ButtonP.Enabled = false;
+            ButtonQ.Enabled = false;
+            ButtonR.Enabled = false;
+            ButtonS.Enabled = false;
+            ButtonT.Enabled = false;
+            ButtonU.Enabled = false;
+            ButtonV.Enabled = false;
+            ButtonW.Enabled = false;
+            ButtonX.Enabled = false;
+            ButtonY.Enabled = false;
+            ButtonZ.Enabled = false;
+        }
+
         private void clearArraysAndLists()
         {
             Array.Resize(ref words, 0);
@@ -215,11 +246,10 @@ namespace Hangman
         //ScoreBoard & Scores
         private int getPlayerIndex(string name)
         {
-            int index;
-
             loadScoreBoardFile();
             string[] allLines = File.ReadAllLines("ScoreBoard.txt");
 
+            int index;
             for (int i = 0; i < allLines.Length; i++)
             {
                 if (name == nicknames[i]) //old player index
@@ -239,14 +269,14 @@ namespace Hangman
             string[] allLines = File.ReadAllLines("ScoreBoard.txt");
 
             nicknames = new string[allLines.Length];
-            scores = new int[allLines.Length];
+            scores    = new int   [allLines.Length];
 
             int index = 0;
             foreach (string currentLine in allLines)
             {
-                string[] column = currentLine.Split(',');
+                string[] column  = currentLine.Split(',');
                 nicknames[index] = column[0];
-                scores[index] = Convert.ToInt32(column[1]);
+                scores   [index] = Convert.ToInt32(column[1]);
                 index++;
             }
 
@@ -268,21 +298,9 @@ namespace Hangman
             }
         }
 
-        private void displayRecentScoreBoardData()
-        {
-            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
-            int numberOfPlayers = 5;
-            for (int i = allLines.Length - 1; i >= allLines.Length - numberOfPlayers; i--)
-            {
-                RecentNicknamesLabel.Text += nicknames[i] + "\n";
-                RecentScoresLabel   .Text += scores   [i] + "\n";     
-            }
-
-        }
-
         private void displayTopScoreBoarData()
         {
-            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+            string[] allLines   = File.ReadAllLines("ScoreBoard.txt");
             int numberOfPlayers = 3;
 
             for (int i = 0; i <= allLines.Length; i++)
@@ -304,84 +322,29 @@ namespace Hangman
             }
             for (int i = 0; i < numberOfPlayers; i++)
             {
+                if (i == allLines.Length) break;
                 TopNicknamesLabel.Text += nicknames[i] + "\n";
                 TopScoresLabel   .Text += scores   [i] + "\n";
             }
         }
 
-
-
-
-        //Panels
-        private void showMainMenuPanel()
+        private void displayRecentScoreBoardData()
         {
-            MainMenuPanel  .Visible = true;
-            GamePanel      .Visible = false;
-            NicknamePanel  .Visible = false;
-            ScoreBoardPanel.Visible = false;
-            HowToPlayPanel .Visible = false;
-        }
+            string[] allLines   = File.ReadAllLines("ScoreBoard.txt");
+            int numberOfPlayers = 5;
+            for (int i = allLines.Length - 1; i >= allLines.Length - numberOfPlayers; i--)
+            {
+                if (i == allLines.Length || i < 0) break;
+                RecentNicknamesLabel.Text += nicknames[i] + "\n";
+                RecentScoresLabel   .Text += scores   [i] + "\n";     
+            }
 
-        private void showGamePanel()
-        {
-            MainMenuPanel  .Visible = false;
-            GamePanel      .Visible = true;
-            NicknamePanel  .Visible = false;
-            ScoreBoardPanel.Visible = false;
-            HowToPlayPanel .Visible = false;
-        }
-
-        private void showNicknamePanel()
-        {
-            MainMenuPanel  .Visible = false;
-            GamePanel      .Visible = false;
-            NicknamePanel  .Visible = true;
-            ScoreBoardPanel.Visible = false;
-            HowToPlayPanel .Visible = false;
-        }
-
-        private void showScoreBoardPanel()
-        {
-            MainMenuPanel  .Visible = false;
-            GamePanel      .Visible = false;
-            NicknamePanel  .Visible = false;
-            ScoreBoardPanel.Visible = true;
-            HowToPlayPanel .Visible = false;
-
-        }
-
-        private void showHowToPlayPanel()
-        {
-            MainMenuPanel  .Visible = false;
-            GamePanel      .Visible = false;
-            NicknamePanel  .Visible = false;
-            ScoreBoardPanel.Visible = false;
-            HowToPlayPanel .Visible = true;
         }
 
 
 
 
-        //Radio buttons
-        private void EasyRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            chosenDifficulty = "easy";
-        }
-
-        private void MediumRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            chosenDifficulty = "medium";
-        }
-
-        private void HardRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            chosenDifficulty = "hard";
-        }
-
-
-
-
-        //Buttons Events
+        //Buttons
         private void guessClick(object sender, EventArgs e)
         {
             Button choice      = sender as Button;
@@ -393,7 +356,6 @@ namespace Hangman
                 updateCopy(enteredLetter);
                 displayWord();
                 currentScore   += 5;
-                ScoreLabel.Text = "";
                 ScoreLabel.Text = currentScore.ToString();
                 updateCurrentPlayerScoreInFile();
             }
@@ -403,9 +365,7 @@ namespace Hangman
             if (currentWordCopy.Equals(currentWord))
             {
                 currentScore           += 50;
-                wordPreviewLabel.Text   = "";
                 wordPreviewLabel.Text   = "You Won!";
-                ScoreLabel.Text         = "";
                 ScoreLabel.Text         = currentScore.ToString();
                 NextLevelButton.Enabled = true;
                 updateCurrentPlayerScoreInFile();
@@ -417,8 +377,9 @@ namespace Hangman
                     PictureBox.Image = hangmanAllImages[wrongGuesses];
                 else
                 {
-                    wordPreviewLabel.Text = "";
-                    wordPreviewLabel.Text = "Game Over!";
+                    gameOver();
+                    wordPreviewLabel.Text = "Game Over!"; 
+                    hintLabel.Text        = "The Word is: " + currentWord;   
                 }
             }
 
@@ -434,6 +395,8 @@ namespace Hangman
 
             if (string.IsNullOrEmpty(NicknameTextBox.Text))
                 NicknameLabel.Text = "Name Not Valid!";
+            else if (isDifficultyRadioButtonChecked == false)
+                NicknameLabel.Text = "Choose difficulty level!";
             else
             {
                 clearArraysAndLists();
@@ -442,7 +405,7 @@ namespace Hangman
                 showGamePanel();
                 if (getPlayerIndex(NicknameTextBox.Text) == -1)
                     File.AppendAllText("ScoreBoard.txt", NicknameTextBox.Text + ","
-                                                       + currentScore         + Environment.NewLine);
+                                                       + currentScore + Environment.NewLine);
             }
 
         }
@@ -463,8 +426,8 @@ namespace Hangman
         {
             showScoreBoardPanel();
             loadScoreBoardFile();
-            displayRecentScoreBoardData();
             displayTopScoreBoarData();
+            displayRecentScoreBoardData();
         }
 
         private void HowToPlayButton_Click(object sender, EventArgs e)
@@ -495,6 +458,77 @@ namespace Hangman
             this.Close();
         }
 
+
+
+
+        //Radio buttons
+        private void EasyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            chosenDifficulty = "easy";
+            isDifficultyRadioButtonChecked = true;
+        }
+
+        private void MediumRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            chosenDifficulty = "medium";
+            isDifficultyRadioButtonChecked = true;
+        }
+
+        private void HardRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            chosenDifficulty = "hard";
+            isDifficultyRadioButtonChecked = true;
+        }
+
+
+
+
+        //Panels
+        private void showMainMenuPanel()
+        {
+            MainMenuPanel.Visible = true;
+            GamePanel.Visible = false;
+            NicknamePanel.Visible = false;
+            ScoreBoardPanel.Visible = false;
+            HowToPlayPanel.Visible = false;
+        }
+
+        private void showGamePanel()
+        {
+            MainMenuPanel.Visible = false;
+            GamePanel.Visible = true;
+            NicknamePanel.Visible = false;
+            ScoreBoardPanel.Visible = false;
+            HowToPlayPanel.Visible = false;
+        }
+
+        private void showNicknamePanel()
+        {
+            MainMenuPanel.Visible = false;
+            GamePanel.Visible = false;
+            NicknamePanel.Visible = true;
+            ScoreBoardPanel.Visible = false;
+            HowToPlayPanel.Visible = false;
+        }
+
+        private void showScoreBoardPanel()
+        {
+            MainMenuPanel.Visible = false;
+            GamePanel.Visible = false;
+            NicknamePanel.Visible = false;
+            ScoreBoardPanel.Visible = true;
+            HowToPlayPanel.Visible = false;
+
+        }
+
+        private void showHowToPlayPanel()
+        {
+            MainMenuPanel.Visible = false;
+            GamePanel.Visible = false;
+            NicknamePanel.Visible = false;
+            ScoreBoardPanel.Visible = false;
+            HowToPlayPanel.Visible = true;
+        }
 
 
     }
