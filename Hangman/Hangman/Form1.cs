@@ -13,15 +13,25 @@ namespace Hangman
 {
     public partial class Form1 : Form
     {
-        private int    wrongGuesses    = 0;
-        private int    currentScore    = 0;
-        private string currentWord     = "";
-        private string currentWordCopy = "";
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private Random rnd = new Random();
+        private int    randomIndex;
+        private int    wrongGuesses     = 0;
+        private int    currentScore     = 0;
+        private string currentWord      = "";
+        private string currentWordCopy  = "";
+        private string chosenDifficulty = "";
         private string[] words;
         private string[] hints;
         private string[] nicknames;
         private int   [] scores;
-        
+
+        List<int> usedWordsIndexes        = new List<int>();
         private Bitmap[] hangmanAllImages = {Hangman.Properties.Resources.Hangman_0,
                                              Hangman.Properties.Resources.Hangman_1,
                                              Hangman.Properties.Resources.Hangman_2,
@@ -30,96 +40,93 @@ namespace Hangman
                                              Hangman.Properties.Resources.Hangman_5,
                                              Hangman.Properties.Resources.Hangman_6};
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            loadWordsFile();
-            setUpWordChoice();
-        }
-
-
-
-        private void loadWordsFile()
+        //Words
+        private void loadWordsOfChosenDifficultyfromfile()
         {
             string[] allLines = File.ReadAllLines("Words.txt");
 
-            words = new string[allLines.Length];
-            hints = new string[allLines.Length];
+            int size = 0;
+            foreach (string currentLine in allLines)
+            {
+                string[] column = currentLine.Split(':');
+                if (column[0] == chosenDifficulty)
+                    size++;
+            }
+            words = new string[size];
+            hints = new string[size];
+
 
             int index = 0;
             foreach (string currentLine in allLines)
             {
-                string[] column = currentLine.Split(',');
-                words[index] = column[0];
-                hints[index] = column[1];
-                index++;
-            }
-
-        }
-
-        private void loadScoreBoardFile()
-        {
-            File.AppendAllText("ScoreBoard.txt", "");  //creates the file if it doesn't exist
-            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
-
-            nicknames = new string[allLines.Length];
-            scores    = new int   [allLines.Length];
-
-            int index = 0;
-            foreach (string currentLine in allLines)
-            {
-                string[] column  = currentLine.Split(',');
-                nicknames[index] = column[0];
-                scores[index]    = Convert.ToInt32(column[1]);
-                index++;
-            }
-
-        }
-
-        private int getPlayerIndex(string name)
-        {
-            int index;
-
-            loadScoreBoardFile();
-            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
-
-            for (int i = 0; i < allLines.Length; i++)
-            {
-                if (name == nicknames[i]) //old player index
+                string[] column = currentLine.Split(':', ',');
+                if (column[0] == chosenDifficulty) //Load words of the required difficulity only
                 {
-                    index = i;
-                    return index;
+                    words[index] = column[1];
+                    hints[index] = column[2];
+                    index++;
                 }
             }
 
-            index = -1;  //new player
-            return index;
         }
 
-        private void updateCurrentPlayerScoreInFile()
+        private void setUpWordChoice()
         {
-            int playerIndex     = getPlayerIndex(NicknameTextBox.Text);
-            scores[playerIndex] = currentScore;
-            string[] allLines   = File.ReadAllLines("ScoreBoard.txt");
+            //reseting all data
+            resetAll();
 
-            //remove old data
-            File.WriteAllText("ScoreBoard.txt", "");
-
-            //export the new data
-            for (int i = 0; i < allLines.Length; i++)
+            //picking up a random word from "words array" without repetition
+            do
             {
-                File.AppendAllText("ScoreBoard.txt", nicknames[i] + "," + scores[i] + Environment.NewLine);
+                randomIndex = rnd.Next(0, words.Length);
+            } while (usedWordsIndexes.Contains(randomIndex));
+            currentWord = words[randomIndex];
+
+            //display its Hint
+            hintLabel.Text = "HINT: " + hints[randomIndex];
+
+            //initialzing the currentWordCopy with blank spaces
+            //according to number of letters in the original word
+            for (int index = 0; index < currentWord.Length; index++)
+            {
+                currentWordCopy += "_";
             }
+            displayWord();
+        }
+
+        private void updateCopy(char letter)
+        {
+
+            char[] currentWordTEMP     = currentWord.ToCharArray();
+            char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
+
+            for (int index = 0; index < currentWordTEMP.Length; index++)
+            {
+                if (letter == currentWordTEMP[index])
+                    currentWordCopyTEMP[index] = letter;
+            }
+
+            currentWordCopy = new string(currentWordCopyTEMP);
+
+        }
+
+        private void displayWord()
+        {
+            wordPreviewLabel.Text = "";
+            for (int index = 0; index < currentWord.Length; index++)
+            {
+                wordPreviewLabel.Text += currentWordCopy.Substring(index, 1);
+                if (index != currentWord.Length - 1)
+                    wordPreviewLabel.Text += " ";
+            }
+
         }
 
         private void resetAll()
         {
             //reset trials and images
-            wrongGuesses = 0;
+            wrongGuesses     = 0;
             PictureBox.Image = hangmanAllImages[wrongGuesses];
 
             //reset words and hints
@@ -127,6 +134,7 @@ namespace Hangman
             currentWordCopy       = "";
             wordPreviewLabel.Text = "";
             hintLabel.Text        = "";
+
 
             //reseting buttons
             ButtonA.Enabled = true;
@@ -158,54 +166,106 @@ namespace Hangman
             NextLevelButton.Enabled = false;
         }
 
-        private void setUpWordChoice()
+        private void winGame()
         {
-            //reseting all data
-            resetAll();
+            //display text
+            wordPreviewLabel.Text = "No More Words!";
+            hintLabel       .Text = "Congratulations!";
 
-            //picking up a random word from "words array"
-            Random rnd   = new Random();
-            int rndIndex = rnd.Next(0, words.Length);
-            currentWord  = words[rndIndex];
-
-            //display its Hint
-            hintLabel.Text = "HINT: " + hints[rndIndex];
-
-            //initialzing the currentWordCopy with blank spaces
-            //according to number of letters in the original word
-            for (int index = 0; index < currentWord.Length; index++)
-            {
-                currentWordCopy += "_";
-            }
-            displayWord();
+            //disable buttons
+            ButtonA.Enabled = false;
+            ButtonB.Enabled = false;
+            ButtonC.Enabled = false;
+            ButtonD.Enabled = false;
+            ButtonE.Enabled = false;
+            ButtonF.Enabled = false;
+            ButtonG.Enabled = false;
+            ButtonH.Enabled = false;
+            ButtonI.Enabled = false;
+            ButtonJ.Enabled = false;
+            ButtonK.Enabled = false;
+            ButtonL.Enabled = false;
+            ButtonM.Enabled = false;
+            ButtonN.Enabled = false;
+            ButtonO.Enabled = false;
+            ButtonP.Enabled = false;
+            ButtonQ.Enabled = false;
+            ButtonR.Enabled = false;
+            ButtonS.Enabled = false;
+            ButtonT.Enabled = false;
+            ButtonU.Enabled = false;
+            ButtonV.Enabled = false;
+            ButtonW.Enabled = false;
+            ButtonX.Enabled = false;
+            ButtonY.Enabled = false;
+            ButtonZ.Enabled = false;
+            NextLevelButton.Enabled = false;
         }
 
-        private void displayWord()
+        private void clearArraysAndLists()
         {
-            wordPreviewLabel.Text = "";
-            for (int index = 0; index < currentWord.Length; index++)
+            Array.Resize(ref words, 0);
+            Array.Resize(ref hints, 0);
+            usedWordsIndexes.Clear();
+        }
+
+
+
+
+        //ScoreBoard & Scores
+        private int getPlayerIndex(string name)
+        {
+            int index;
+
+            loadScoreBoardFile();
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            for (int i = 0; i < allLines.Length; i++)
             {
-                wordPreviewLabel.Text += currentWordCopy.Substring(index, 1);
-                if (index != currentWord.Length - 1)
-                    wordPreviewLabel.Text += " ";
+                if (name == nicknames[i]) //old player index
+                {
+                    index = i;
+                    return index;
+                }
+            }
+
+            index = -1;  //new player
+            return index;
+        }
+
+        private void loadScoreBoardFile()
+        {
+            File.AppendAllText("ScoreBoard.txt", "");  //creates the file if it doesn't exist
+            string[] allLines = File.ReadAllLines("ScoreBoard.txt");
+
+            nicknames = new string[allLines.Length];
+            scores = new int[allLines.Length];
+
+            int index = 0;
+            foreach (string currentLine in allLines)
+            {
+                string[] column = currentLine.Split(',');
+                nicknames[index] = column[0];
+                scores[index] = Convert.ToInt32(column[1]);
+                index++;
             }
 
         }
 
-        private void updateCopy(char letter)
+        private void updateCurrentPlayerScoreInFile()
         {
+            int playerIndex     = getPlayerIndex(NicknameTextBox.Text);
+            scores[playerIndex] = currentScore;
+            string[] allLines   = File.ReadAllLines("ScoreBoard.txt");
 
-            char[] currentWordTEMP     = currentWord.ToCharArray();
-            char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
+            //remove old data
+            File.WriteAllText("ScoreBoard.txt", "");
 
-            for (int index = 0; index < currentWordTEMP.Length; index++)
+            //export the new data
+            for (int i = 0; i < allLines.Length; i++)
             {
-                if (letter == currentWordTEMP[index])
-                    currentWordCopyTEMP[index] = letter;
+                File.AppendAllText("ScoreBoard.txt", nicknames[i] + "," + scores[i] + Environment.NewLine);
             }
-
-            currentWordCopy = new string(currentWordCopyTEMP);
-
         }
 
         private void displayRecentScoreBoardData()
@@ -301,6 +361,26 @@ namespace Hangman
 
 
 
+
+        //Radio buttons
+        private void EasyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            chosenDifficulty = "easy";
+        }
+
+        private void MediumRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            chosenDifficulty = "medium";
+        }
+
+        private void HardRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            chosenDifficulty = "hard";
+        }
+
+
+
+
         //Buttons Events
         private void guessClick(object sender, EventArgs e)
         {
@@ -329,6 +409,7 @@ namespace Hangman
                 ScoreLabel.Text         = currentScore.ToString();
                 NextLevelButton.Enabled = true;
                 updateCurrentPlayerScoreInFile();
+                usedWordsIndexes.Add(randomIndex);
             }
             else
             {
@@ -355,16 +436,27 @@ namespace Hangman
                 NicknameLabel.Text = "Name Not Valid!";
             else
             {
+                clearArraysAndLists();
+                loadWordsOfChosenDifficultyfromfile();
+                setUpWordChoice();
                 showGamePanel();
                 if (getPlayerIndex(NicknameTextBox.Text) == -1)
-                    File.AppendAllText("ScoreBoard.txt", NicknameTextBox.Text + "," + currentScore + Environment.NewLine);
+                    File.AppendAllText("ScoreBoard.txt", NicknameTextBox.Text + ","
+                                                       + currentScore         + Environment.NewLine);
             }
 
         }
 
         private void NextLevelButton_Click(object sender, EventArgs e)
         {
-            setUpWordChoice();
+
+            if (usedWordsIndexes.Count == words.Length) //no more words exist in the array
+            {
+                winGame();
+                clearArraysAndLists();
+            }
+            else
+                setUpWordChoice();
         }
 
         private void ScoreboardButton_Click(object sender, EventArgs e)
@@ -384,21 +476,25 @@ namespace Hangman
         {
             showMainMenuPanel();
 
+            //reset arrays and list
+            clearArraysAndLists();
+
             //reset GamePanel data
             currentScore = 0;
             resetAll();
 
             //reset ScoreBoard Panel data
-            TopNicknamesLabel.Text = "";
-            TopScoresLabel.Text = "";
+            TopNicknamesLabel   .Text = "";
+            TopScoresLabel      .Text = "";
             RecentNicknamesLabel.Text = "";
-            RecentScoresLabel.Text = "";
+            RecentScoresLabel   .Text = "";
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
 
 
     }
