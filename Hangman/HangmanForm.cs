@@ -447,7 +447,8 @@ namespace Hangman
             clearArraysAndLists();
 
             //reset GamePanel data 
-            currentScore = 0;
+            currentScore    = 0;
+            ScoreLabel.Text = currentScore.ToString();
             resetAll();
 
             //reset NicknamePanel data
