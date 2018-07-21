@@ -69,7 +69,6 @@ namespace Hangman
                     index++;
                 }
             }
-
         }
 
         private void setUpWordChoice()
@@ -98,7 +97,6 @@ namespace Hangman
 
         private void updateCopy(char letter)
         {
-
             char[] currentWordTEMP     = currentWord.ToCharArray();
             char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
 
@@ -109,7 +107,6 @@ namespace Hangman
             }
 
             currentWordCopy = new string(currentWordCopyTEMP);
-
         }
 
         private void displayWord()
@@ -121,7 +118,6 @@ namespace Hangman
                 if (index != currentWord.Length - 1)
                     wordPreviewLabel.Text += " ";
             }
-
         }
 
         private void resetAll()
@@ -279,7 +275,6 @@ namespace Hangman
                 scores   [index] = Convert.ToInt32(column[1]);
                 index++;
             }
-
         }
 
         private void updateCurrentPlayerScoreInFile()
@@ -382,23 +377,23 @@ namespace Hangman
                     hintLabel.Text        = "The Word is: " + currentWord;   
                 }
             }
-
         }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
             showNicknamePanel();
+            NicknameTextBox.Select();
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(NicknameTextBox.Text))
                 NicknameLabel.Text = "Name Not Valid!";
             else if (isDifficultyRadioButtonChecked == false)
                 NicknameLabel.Text = "Choose difficulty level!";
             else
             {
+                NicknameTextBox.Enabled = false;
                 clearArraysAndLists();
                 loadWordsOfChosenDifficultyfromfile();
                 setUpWordChoice();
@@ -407,12 +402,10 @@ namespace Hangman
                     File.AppendAllText("ScoreBoard.txt", NicknameTextBox.Text + ","
                                                        + currentScore + Environment.NewLine);
             }
-
         }
 
         private void NextLevelButton_Click(object sender, EventArgs e)
         {
-
             if (usedWordsIndexes.Count == words.Length) //no more words exist in the array
             {
                 winGame();
@@ -442,11 +435,18 @@ namespace Hangman
             //reset arrays and list
             clearArraysAndLists();
 
-            //reset GamePanel data
+            //reset GamePanel data 
             currentScore = 0;
             resetAll();
 
-            //reset ScoreBoard Panel data
+            //reset NicknamePanel data
+            NicknameTextBox  .Text    = "";
+            NicknameTextBox  .Enabled = true;
+            EasyRadioButton  .Checked = false;
+            MediumRadioButton.Checked = false;
+            HardRadioButton  .Checked = false;
+            
+            //reset ScoreBoardPanel data
             TopNicknamesLabel   .Text = "";
             TopScoresLabel      .Text = "";
             RecentNicknamesLabel.Text = "";
@@ -486,51 +486,179 @@ namespace Hangman
         //Panels
         private void showMainMenuPanel()
         {
-            MainMenuPanel.Visible = true;
-            GamePanel.Visible = false;
-            NicknamePanel.Visible = false;
+            MainMenuPanel  .Visible = true;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = false;
             ScoreBoardPanel.Visible = false;
-            HowToPlayPanel.Visible = false;
+            HowToPlayPanel .Visible = false;
         }
 
         private void showGamePanel()
         {
-            MainMenuPanel.Visible = false;
-            GamePanel.Visible = true;
-            NicknamePanel.Visible = false;
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = true;
+            NicknamePanel  .Visible = false;
             ScoreBoardPanel.Visible = false;
-            HowToPlayPanel.Visible = false;
+            HowToPlayPanel .Visible = false;
         }
 
         private void showNicknamePanel()
         {
-            MainMenuPanel.Visible = false;
-            GamePanel.Visible = false;
-            NicknamePanel.Visible = true;
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = true;
             ScoreBoardPanel.Visible = false;
-            HowToPlayPanel.Visible = false;
+            HowToPlayPanel .Visible = false;
         }
 
         private void showScoreBoardPanel()
         {
-            MainMenuPanel.Visible = false;
-            GamePanel.Visible = false;
-            NicknamePanel.Visible = false;
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = false;
             ScoreBoardPanel.Visible = true;
-            HowToPlayPanel.Visible = false;
-
+            HowToPlayPanel .Visible = false;
         }
 
         private void showHowToPlayPanel()
         {
-            MainMenuPanel.Visible = false;
-            GamePanel.Visible = false;
-            NicknamePanel.Visible = false;
+            MainMenuPanel  .Visible = false;
+            GamePanel      .Visible = false;
+            NicknamePanel  .Visible = false;
             ScoreBoardPanel.Visible = false;
-            HowToPlayPanel.Visible = true;
+            HowToPlayPanel .Visible = true;
         }
 
+        private void HangmanForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            //MainMenuPanel Keydown event
+            if (MainMenuPanel.Visible == true && e.KeyCode == Keys.Enter)
+                StartButton_Click(sender, e);
+            if (MainMenuPanel.Visible == true && e.KeyCode == Keys.Escape)
+                ExitButton_Click(sender, e);
+
+            //BackButton Keydown event
+            if ((GamePanel     .Visible == true  ||
+                NicknamePanel  .Visible == true  ||
+                ScoreBoardPanel.Visible == true  ||
+                HowToPlayPanel .Visible == true) &&
+                e.KeyCode               == Keys.Escape)
+                BackButton_Click(sender, e);
+
+            //NicknamePanel Keydown event
+            if (NicknamePanel.Visible == true && e.KeyCode == Keys.Enter)
+                PlayButton_Click(sender, e);
+
+            //GamePanel Keydown event
+            if (GamePanel.Visible == true){
+                switch (e.KeyCode)
+                {
+                    case Keys.A:
+                        guessClick(ButtonA, e);
+                        break;
+
+                    case Keys.B:
+                        guessClick(ButtonB, e);
+                        break;
+
+                    case Keys.C:
+                        guessClick(ButtonC, e);
+                        break;
+
+                    case Keys.D:
+                        guessClick(ButtonD, e);
+                        break;
+
+                    case Keys.E:
+                        guessClick(ButtonE, e);
+                        break;
+
+                    case Keys.F:
+                        guessClick(ButtonF, e);
+                        break;
+
+                    case Keys.G:
+                        guessClick(ButtonG, e);
+                        break;
+
+                    case Keys.H:
+                        guessClick(ButtonH, e);
+                        break;
+
+                    case Keys.I:
+                        guessClick(ButtonI, e);
+                        break;
+
+                    case Keys.J:
+                        guessClick(ButtonJ, e);
+                        break;
+
+                    case Keys.K:
+                        guessClick(ButtonK, e);
+                        break;
+
+                    case Keys.L:
+                        guessClick(ButtonL, e);
+                        break;
+
+                    case Keys.M:
+                        guessClick(ButtonM, e);
+                        break;
+
+                    case Keys.N:
+                        guessClick(ButtonN, e);
+                        break;
+
+                    case Keys.O:
+                        guessClick(ButtonO, e);
+                        break;
+
+                    case Keys.P:
+                        guessClick(ButtonP, e);
+                        break;
+
+                    case Keys.Q:
+                        guessClick(ButtonQ, e);
+                        break;
+
+                    case Keys.R:
+                        guessClick(ButtonR, e);
+                        break;
+
+                    case Keys.S:
+                        guessClick(ButtonS, e);
+                        break;
+
+                    case Keys.T:
+                        guessClick(ButtonT, e);
+                        break;
+
+                    case Keys.U:
+                        guessClick(ButtonU, e);
+                        break;
+
+                    case Keys.V:
+                        guessClick(ButtonV, e);
+                        break;
+
+                    case Keys.W:
+                        guessClick(ButtonW, e);
+                        break;
+
+                    case Keys.X:
+                        guessClick(ButtonX, e);
+                        break;
+
+                    case Keys.Y:
+                        guessClick(ButtonY, e);
+                        break;
+
+                    case Keys.Z:
+                        guessClick(ButtonY, e);
+                        break;
+                }
+            }    
+        }
 
     }
-    
 }

@@ -117,6 +117,7 @@
             // ExitButton
             // 
             this.ExitButton.BackColor = System.Drawing.Color.Indigo;
+            this.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ExitButton.FlatAppearance.BorderSize = 0;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Font = new System.Drawing.Font("Cairo Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -687,7 +688,6 @@
             this.GamePanel.Controls.Add(this.PictureBox);
             this.GamePanel.Controls.Add(this.ScoreTitle);
             this.GamePanel.Controls.Add(this.ScoreLabel);
-            this.GamePanel.Controls.Add(this.NextLevelButton);
             this.GamePanel.Controls.Add(this.wordPreviewLabel);
             this.GamePanel.Controls.Add(this.hintLabel);
             this.GamePanel.Controls.Add(this.ButtonA);
@@ -716,6 +716,7 @@
             this.GamePanel.Controls.Add(this.ButtonX);
             this.GamePanel.Controls.Add(this.ButtonY);
             this.GamePanel.Controls.Add(this.ButtonZ);
+            this.GamePanel.Controls.Add(this.NextLevelButton);
             this.GamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GamePanel.Location = new System.Drawing.Point(0, 0);
             this.GamePanel.Name = "GamePanel";
@@ -957,14 +958,16 @@
             this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(880, 665);
             this.Controls.Add(this.GamePanel);
-            this.Controls.Add(this.NicknamePanel);
             this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.BackButton);
+            this.Controls.Add(this.NicknamePanel);
             this.Controls.Add(this.HowToPlayPanel);
             this.Controls.Add(this.ScoreBoardPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "HangmanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HangmanForm_KeyDown);
             this.NicknamePanel.ResumeLayout(false);
             this.NicknamePanel.PerformLayout();
             this.GamePanel.ResumeLayout(false);

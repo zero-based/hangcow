@@ -1,7 +1,15 @@
 easy:CAT,A pet
 easy:DOG,A loyal pet
 easy:FISH,Lives in the sea
+esay:MAY,Following April
+easy:BOY,A young man
+easy:TIME,Goes in one direction only
+easy:EGYPT,Country of the pyramids
+easy:BLACK,The darkest color
 medium:COMPUTER,Understands binary only
 medium:PYTHON,Programming language
-hard:ANDROID,Created by Google
-hard:FACEBOOK,Social network
+medium:MONKEY,Loves bananas
+medium:ANDROID,Created by Google
+medium:FACEBOOK,Social network
+hard:MATHEMATICS,Find X
+hard:GRANDMOTHER,A family member
