@@ -1,7 +1,30 @@
 easy:CAT,A pet
+
 easy:DOG,A loyal pet
+easy:MAY,Following April
+easy:BOY,A young man
+easy:TIME,Goes in one direction only
+easy:EGYPT,Country of the pyramids
+easy:BLACK,The darkest color
 easy:FISH,Lives in the sea
+easy:OCTOPUS,Has 8 legs
+easy:MONKEY,Loves Banana
+easy:HTML,Markup language
+easy:YOLO,You only live once
+easy:HYUNDAI,Cars
 medium:COMPUTER,Understands binary only
+medium:ANDROID,Created by Google
 medium:PYTHON,Programming language
-hard:ANDROID,Created by Google
+medium:PIZZA,Italian food
+medium:DISNEY,Where dreams come true!
+medium:RADIUS,Half the diameter
+medium:HATCHBACK,Car type
 hard:FACEBOOK,Social network
+hard:OTTAWA,Canada's capital
+hard:CANBERRA,Australia's capital
+hard:PACIFIC,Ocean
+hard:YACHT,Seal in the sea
+hard:PLANE,Airport
+hard:PLAYGROUND,Break time
+hard:MATHEMATICS,Find X
+hard:GRANDMOTHER,A family member
