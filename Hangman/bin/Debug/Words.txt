@@ -1,0 +1,7 @@
+easy:CAT,A pet
+easy:DOG,A loyal pet
+easy:FISH,Lives in the sea
+medium:COMPUTER,Understands binary only
+medium:PYTHON,Programming language
+hard:ANDROID,Created by Google
+hard:FACEBOOK,Social network
