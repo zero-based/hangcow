@@ -8,3 +8,7 @@ Hangman game [Cow edition] coded using C#
 #### 4. Multiple difficulties
 #### 5. Input letters using both mouse and keyboard
 
+# Preview:
+![preview](https://user-images.githubusercontent.com/41103290/43040209-3a6fb6bc-8d3e-11e8-8040-a7f24ff310c6.gif)
+
+
