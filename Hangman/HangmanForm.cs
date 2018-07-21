@@ -430,8 +430,8 @@ namespace Hangman
         {
             showScoreBoardPanel();
             loadScoreBoardFile();
-            displayTopScoreBoarData();
             displayRecentScoreBoardData();
+            displayTopScoreBoarData();
         }
 
         private void HowToPlayButton_Click(object sender, EventArgs e)
