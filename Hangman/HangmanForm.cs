@@ -41,16 +41,7 @@ namespace Hangman
                                                 Hangman.Properties.Resources.Hangcow_5,
                                                 Hangman.Properties.Resources.Hangcow_6};
 
-        //primary colors
-        //  Color primaryDark = System.Drawing.ColorTranslator.FromHtml("#0081cb");
-        //  Color primary = System.Drawing.ColorTranslator.FromHtml("#00b0ff");
-        //  Color primaryLight = System.Drawing.ColorTranslator.FromHtml("#69e2ff");
-
-        //secondary colors
-        //  Color secondaryDark = System.Drawing.ColorTranslator.FromHtml("#002f6c");
-        //  Color secondary = System.Drawing.ColorTranslator.FromHtml("#01579b");
-        //  Color secondaryLight = System.Drawing.ColorTranslator.FromHtml("#4f83cc");
-                                            
+                           
         //Words
         private void loadWordsOfChosenDifficultyfromfile()
         {
@@ -106,7 +97,7 @@ namespace Hangman
 
         private void updateCopy(char letter)
         {
-            char[] currentWordTEMP     = currentWord.ToCharArray();
+            char[] currentWordTEMP     = currentWord    .ToCharArray();
             char[] currentWordCopyTEMP = currentWordCopy.ToCharArray();
 
             for (int index = 0; index < currentWordTEMP.Length; index++)
@@ -366,7 +357,7 @@ namespace Hangman
             else
                 wrongGuesses++;
 
-            if (currentWordCopy.Equals(currentWord))
+            if (currentWordCopy == currentWord)
             {
                 currentScore           += 50;
                 WordPreviewLabel.Text   = "You Won!";
@@ -570,115 +561,143 @@ namespace Hangman
                 switch (e.KeyCode)
                 {
                     case Keys.Enter:
-                        NextLevelButton_Click(sender, e);
+                        if (NextLevelButton.Enabled)
+                            NextLevelButton_Click(sender, e);
                         break;
 
                     case Keys.A:
-                        guessClick(ButtonA, e);
+                        if (ButtonA.Enabled)
+                            guessClick(ButtonA, e);
                         break;
 
                     case Keys.B:
-                        guessClick(ButtonB, e);
+                        if (ButtonB.Enabled)
+                            guessClick(ButtonB, e);
                         break;
 
                     case Keys.C:
-                        guessClick(ButtonC, e);
+                        if (ButtonC.Enabled)
+                            guessClick(ButtonC, e);
                         break;
 
                     case Keys.D:
-                        guessClick(ButtonD, e);
+                        if (ButtonD.Enabled)
+                            guessClick(ButtonD, e);
                         break;
 
                     case Keys.E:
-                        guessClick(ButtonE, e);
+                        if (ButtonE.Enabled)
+                            guessClick(ButtonE, e);
                         break;
 
                     case Keys.F:
-                        guessClick(ButtonF, e);
+                        if (ButtonF.Enabled)
+                            guessClick(ButtonF, e);
                         break;
 
                     case Keys.G:
-                        guessClick(ButtonG, e);
+                        if (ButtonG.Enabled)
+                            guessClick(ButtonG, e);
                         break;
 
                     case Keys.H:
-                        guessClick(ButtonH, e);
+                        if (ButtonH.Enabled)
+                            guessClick(ButtonH, e);
                         break;
 
                     case Keys.I:
-                        guessClick(ButtonI, e);
+                        if (ButtonI.Enabled)
+                            guessClick(ButtonI, e);
                         break;
 
                     case Keys.J:
-                        guessClick(ButtonJ, e);
+                        if (ButtonJ.Enabled)
+                            guessClick(ButtonJ, e);
                         break;
 
                     case Keys.K:
-                        guessClick(ButtonK, e);
+                        if (ButtonK.Enabled)
+                            guessClick(ButtonK, e);
                         break;
 
                     case Keys.L:
-                        guessClick(ButtonL, e);
+                        if (ButtonL.Enabled)
+                            guessClick(ButtonL, e);
                         break;
 
                     case Keys.M:
-                        guessClick(ButtonM, e);
+                        if (ButtonM.Enabled)
+                            guessClick(ButtonM, e);
                         break;
 
                     case Keys.N:
-                        guessClick(ButtonN, e);
+                        if (ButtonN.Enabled)
+                            guessClick(ButtonN, e);
                         break;
 
                     case Keys.O:
-                        guessClick(ButtonO, e);
+                        if (ButtonO.Enabled)
+                            guessClick(ButtonO, e);
                         break;
 
                     case Keys.P:
-                        guessClick(ButtonP, e);
+                        if (ButtonP.Enabled)
+                            guessClick(ButtonP, e);
                         break;
 
                     case Keys.Q:
-                        guessClick(ButtonQ, e);
+                        if (ButtonQ.Enabled)
+                            guessClick(ButtonQ, e);
                         break;
 
                     case Keys.R:
-                        guessClick(ButtonR, e);
+                        if (ButtonR.Enabled)
+                            guessClick(ButtonR, e);
                         break;
 
                     case Keys.S:
-                        guessClick(ButtonS, e);
+                        if (ButtonS.Enabled)
+                            guessClick(ButtonS, e);
                         break;
 
                     case Keys.T:
-                        guessClick(ButtonT, e);
+                        if (ButtonT.Enabled)
+                            guessClick(ButtonT, e);
                         break;
 
                     case Keys.U:
-                        guessClick(ButtonU, e);
+                        if (ButtonU.Enabled)
+                            guessClick(ButtonU, e);
                         break;
 
                     case Keys.V:
-                        guessClick(ButtonV, e);
+                        if (ButtonV.Enabled)
+                            guessClick(ButtonV, e);
                         break;
 
                     case Keys.W:
-                        guessClick(ButtonW, e);
+                        if (ButtonW.Enabled)
+                            guessClick(ButtonW, e);
                         break;
 
                     case Keys.X:
-                        guessClick(ButtonX, e);
+                        if (ButtonX.Enabled)
+                            guessClick(ButtonX, e);
                         break;
 
                     case Keys.Y:
-                        guessClick(ButtonY, e);
+                        if (ButtonY.Enabled)
+                            guessClick(ButtonY, e);
                         break;
 
                     case Keys.Z:
-                        guessClick(ButtonY, e);
+                        if (ButtonZ.Enabled)
+                            guessClick(ButtonZ, e);
                         break;
                 }
             }
         }
+
 
     }
 }

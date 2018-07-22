@@ -1,5 +1,4 @@
 easy:CAT,A pet
-
 easy:DOG,A loyal pet
 easy:MAY,Following April
 easy:BOY,A young man
