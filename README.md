@@ -1,14 +1,27 @@
 # HangCow
-Hangman game [Cow edition] coded using C#
 
-# Features:
-#### 1. GUI
-#### 2. Word list
-#### 3. Show Scores (Top - Recent)
-#### 4. Multiple difficulties
-#### 5. Input letters using both mouse and keyboard
+Hangman game [Cow edition] using WinForms and C#
 
-# Preview:
+## Developers List
+
+In alphabetical order:
+
+| Name             | Account                                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Michael Safwat   | -                                                            |
+| Micheline Medhat | -                                                            |
+| Monica Adel      | -                                                            |
+| Youssef Raafat   | -                                                            |
+
+---
+
+## Features
+
+1. GUI
+2. Word list
+3. Show Scores (Top - Recent)
+4. Multiple difficulties
+5. Input letters using both mouse and keyboard
+
+## Preview
 ![preview](https://user-images.githubusercontent.com/41103290/43040209-3a6fb6bc-8d3e-11e8-8040-a7f24ff310c6.gif)
-
-
