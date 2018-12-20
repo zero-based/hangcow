@@ -11,7 +11,7 @@ In alphabetical order:
 | Michael Safwat   | [@MichaelSafwatHanna](https://github.com/MichaelSafwatHanna) |
 | Micheline Medhat | -                                                            |
 | Monica Adel      | -                                                            |
-| Youssef Raafat   | -                                                            |
+| Youssef Raafat   | [@YoussefRaafatNasry](https://github.com/YoussefRaafatNasry) |
 
 ---
 
