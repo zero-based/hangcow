@@ -10,7 +10,7 @@ In alphabetical order:
 | ---------------- | ------------------------------------------------------------ |
 | Michael Safwat   | [@MichaelSafwatHanna](https://github.com/MichaelSafwatHanna) |
 | Micheline Medhat | -                                                            |
-| Monica Adel      | -                                                            |
+| Monica Adel      | [@MonicaTanios](https://github.com/MonicaTanios)             |
 | Youssef Raafat   | [@YoussefRaafatNasry](https://github.com/YoussefRaafatNasry) |
 
 ---
